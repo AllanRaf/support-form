@@ -1,25 +1,27 @@
 import React from "react";
 import { Field, ErrorMessage } from "formik";
 import styled from "styled-components";
-import { CustomFieldInput } from "./FieldInput";
 
-type AdditionalInfoFieldProps = {
-  fieldName: string;
+type CustomFieldInputProps = {
+  name: string;
 };
 
-export const AdditionalInfoField: React.FunctionComponent<AdditionalInfoFieldProps> = ({
-  fieldName,
+export const CustomFieldInput: React.FunctionComponent<CustomFieldInputProps> = ({
+  name,
 }) => {
-  switch (fieldName) {
-    case "phoneNumber":
-      return <CustomFieldInput name={fieldName} />;
-
-    case "Software Issue":
-      return <input type="number" name="softwareVersion" placeholder="1.1.1" />;
-
-    default:
-      return null;
-  }
+  return (
+    <Field name={name}>
+      {({
+        field, // { name, value, onChange, onBlur }
+      }) => (
+        <InputContainer>
+          <UserInputLabel>{name}</UserInputLabel>
+          <UserInput type="text" placeholder={name} {...field} />
+          <ErrorMessage name={name} component={ErrorContainer} />
+        </InputContainer>
+      )}
+    </Field>
+  );
 };
 
 const InputContainer = styled.div`

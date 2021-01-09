@@ -5,6 +5,7 @@ import { DropDownField } from "./components/DropDownField";
 import { AdditionalInfoField } from "./components/AdditionalInfoField";
 import styled from "styled-components";
 import { supportFormValidation } from "./supportFormValidation";
+import { CustomFieldInput } from "./components/FieldInput";
 
 type SupportFormProps = RouteComponentProps;
 
@@ -12,6 +13,10 @@ interface FormValues {
   name: string;
   email: string;
   description: string;
+  phoneNumber: string;
+  selected: string;
+  text: string;
+  color: string;
 }
 
 const SupportForm: React.FunctionComponent<SupportFormProps> = ({
@@ -21,9 +26,13 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
     name: "",
     email: "",
     description: "",
+    phoneNumber: "1234",
+    selected: "text",
+    text: "",
+    color: "",
   };
 
-  const topicOptions = ["General Question", "Software Issue", "Call Me Back"];
+  const topicOptions = ["General Question", "Software Issue", "phoneNumber"];
   const [supportData, setSupportData] = useState(initialValues);
   const [topic, setTopic] = useState(topicOptions[0]);
 
@@ -47,29 +56,11 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
           }, 400);
         }}
       >
-        {({ isSubmitting }) => (
+        {({ isSubmitting, values, errors }) => (
           <Form>
-            <Field name="name">
-              {({
-                field, // { name, value, onChange, onBlur }
-              }) => (
-                <InputContainer>
-                  <UserInputLabel>name</UserInputLabel>
-                  <UserInput type="text" placeholder="name" {...field} />
-                  <ErrorMessage name="name" component={ErrorContainer} />
-                </InputContainer>
-              )}
-            </Field>
+            <CustomFieldInput name="name" />
 
-            <Field name="email">
-              {({ field }) => (
-                <InputContainer>
-                  <UserInputLabel>email</UserInputLabel>
-                  <UserInput type="email" placeholder="email" {...field} />
-                  <ErrorMessage name="email" component={ErrorContainer} />
-                </InputContainer>
-              )}
-            </Field>
+            <CustomFieldInput name="email" />
 
             <Field name="description">
               {({ field }) => (
@@ -85,7 +76,7 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
               )}
             </Field>
 
-            <Field
+            {/*     <Field
               name="topic"
               as="select"
               onChange={(event) => {
@@ -95,7 +86,31 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
             >
               <DropDownField topicOptions={topicOptions} />
             </Field>
-            <AdditionalInfoField fieldName={topic} />
+            <AdditionalInfoField fieldName={topic} /> */}
+
+            <div>
+              <Field name="selected" component="select">
+                <option label="General Question" value="generalQuestion" />
+                <option label="Call back" value="phoneNumber" />
+                <option label="Software Issue" value="softwareIssue" />
+              </Field>
+            </div>
+            {(values.selected === "text" && (
+              <div>
+                <Field name="text" component="input" />
+                {errors && errors.text}
+              </div>
+            )) ||
+              (values.selected === "color" && (
+                <div>
+                  <Field name="color" component="select">
+                    <option value="red">red</option>
+                    <option value="blue">blue</option>
+                    <option value="green">green</option>
+                  </Field>
+                  {errors && errors.color}
+                </div>
+              ))}
 
             <SubmitButton type="submit" disabled={isSubmitting}>
               Submit
