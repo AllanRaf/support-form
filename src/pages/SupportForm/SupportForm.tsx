@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import { Field, Form, Formik, FormikHelpers, ErrorMessage } from "formik";
+import { Field, Form, Formik, ErrorMessage } from "formik";
+import { DropDownField } from "./components/DropDownField";
+import { AdditionalInfoField } from "./components/AdditionalInfoField";
 import styled from "styled-components";
 import { supportFormValidation } from "./supportFormValidation";
 
@@ -20,7 +22,10 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
     email: "",
     description: "",
   };
+
+  const topicOptions = ["General Question", "Software Issue", "Call Me Back"];
   const [supportData, setSupportData] = useState(initialValues);
+  const [topic, setTopic] = useState(topicOptions[0]);
 
   const handleSubmit = (values: FormValues) => {
     console.log("submitting", values);
@@ -51,20 +56,20 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
                 <InputContainer>
                   <UserInputLabel>name</UserInputLabel>
                   <UserInput type="text" placeholder="name" {...field} />
+                  <ErrorMessage name="name" component={ErrorContainer} />
                 </InputContainer>
               )}
             </Field>
-            <ErrorMessage name="name" component={ErrorContainer} />
 
             <Field name="email">
               {({ field }) => (
                 <InputContainer>
                   <UserInputLabel>email</UserInputLabel>
                   <UserInput type="email" placeholder="email" {...field} />
+                  <ErrorMessage name="email" component={ErrorContainer} />
                 </InputContainer>
               )}
             </Field>
-            <ErrorMessage name="email" component={ErrorContainer} />
 
             <Field name="description">
               {({ field }) => (
@@ -75,10 +80,22 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
                     placeholder="Please describe"
                     {...field}
                   />
+                  <ErrorMessage name="description" component={ErrorContainer} />
                 </InputContainer>
               )}
             </Field>
-            <ErrorMessage name="description" component={ErrorContainer} />
+
+            <Field
+              name="topic"
+              as="select"
+              onChange={(event) => {
+                console.log("select option changed", event.target.value);
+                setTopic(event.target.value);
+              }}
+            >
+              <DropDownField topicOptions={topicOptions} />
+            </Field>
+            <AdditionalInfoField fieldName={topic} />
 
             <SubmitButton type="submit" disabled={isSubmitting}>
               Submit
