@@ -22,7 +22,7 @@ export const supportFormValidation = yup.lazy((values) => {
           .string()
           .label("phoneNumber")
           .required("Please enter phone number")
-          .min(3, "too short");
+          .min(2, "too short");
       } else {
         return yup.mixed().notRequired();
       }
@@ -33,7 +33,7 @@ export const supportFormValidation = yup.lazy((values) => {
           .string()
           .label("softwareIssue")
           .required("Please enter software version")
-          .min(3, "too short");
+          .min(4, "too short");
       } else {
         return yup.mixed().notRequired();
       }

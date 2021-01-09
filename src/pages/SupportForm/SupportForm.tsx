@@ -3,6 +3,7 @@ import { withRouter, RouteComponentProps } from "react-router-dom";
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import { DropDownField } from "./components/DropDownField";
 import { AdditionalInfoField } from "./components/AdditionalInfoField";
+import { SelectOption } from "./components/SelectOption";
 import styled from "styled-components";
 import { supportFormValidation } from "./supportFormValidation";
 import { CustomFieldInput } from "./components/FieldInput";
@@ -16,8 +17,6 @@ interface FormValues {
   selected: string;
   softwareIssue: string;
   phoneNumber: string;
-
-  option: string;
 }
 
 const SupportForm: React.FunctionComponent<SupportFormProps> = ({
@@ -30,17 +29,25 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
     selected: "generalQuestion",
     phoneNumber: "",
     softwareIssue: "",
-    option: "generalQuestion",
   };
 
-  const topicOptions = ["General Question", "Software Issue", "phoneNumber"];
+  const topicOptions = {
+    generalQuestion: "generalQuestion",
+    phoneNumber: "phoneNumber",
+    softwareIssue: "softwareIssue",
+  };
   const [supportData, setSupportData] = useState(initialValues);
-  const [topic, setTopic] = useState(topicOptions[0]);
+  const [topic, setTopic] = useState(topicOptions.generalQuestion);
 
   const handleSubmit = (values: FormValues) => {
     console.log("submitting", values);
     setSupportData(values);
     // history.replace("/contactsent");
+  };
+
+  const handleSelectChange = (event) => {
+    console.log("handleSelectChange", event.target.value);
+    setTopic(event.target.value);
   };
   return (
     <SupportFormContainer>
@@ -66,23 +73,22 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
             <CustomFieldInput name="description" inputType="textarea" />
 
             <div>
-              <Field name="selected" component="select">
+              <Field
+                name="selected"
+                component="select"
+                /*       onChange={handleSelectChange}
+                value={topic} */
+              >
                 <option label="General Question" value="generalQuestion" />
                 <option label="Call back" value="phoneNumber" />
                 <option label="Software Issue" value="softwareIssue" />
               </Field>
             </div>
             {(values.selected === "softwareIssue" && (
-              <div>
-                <Field name="softwareIssue" component="input" />
-                <ErrorMessage name="softwareIssue" component={ErrorContainer} />
-              </div>
+              <SelectOption selectedOption="softwareIssue" />
             )) ||
               (values.selected === "phoneNumber" && (
-                <div>
-                  <Field name="phoneNumber" component="input" />
-                  <ErrorMessage name="phoneNumber" component={ErrorContainer} />
-                </div>
+                <SelectOption selectedOption="phoneNumber" />
               ))}
 
             <SubmitButton type="submit" disabled={isSubmitting}>
