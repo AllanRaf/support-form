@@ -4,10 +4,12 @@ import styled from "styled-components";
 
 type CustomFieldInputProps = {
   name: string;
+  inputType?: string;
 };
 
 export const CustomFieldInput: React.FunctionComponent<CustomFieldInputProps> = ({
   name,
+  inputType = "text",
 }) => {
   return (
     <Field name={name}>
@@ -16,7 +18,15 @@ export const CustomFieldInput: React.FunctionComponent<CustomFieldInputProps> = 
       }) => (
         <InputContainer>
           <UserInputLabel>{name}</UserInputLabel>
-          <UserInput type="text" placeholder={name} {...field} />
+          {inputType === "text" ? (
+            <UserInput type="text" placeholder={name} {...field} />
+          ) : (
+            <UserInputDescription
+              name="description"
+              placeholder="Please describe"
+              {...field}
+            />
+          )}
           <ErrorMessage name={name} component={ErrorContainer} />
         </InputContainer>
       )}
@@ -51,4 +61,9 @@ const UserInput = styled.input`
 const ErrorContainer = styled.div`
   font-size: 1.5rem;
   color: red;
+`;
+
+const UserInputDescription = styled.textarea`
+  width: 25%;
+  color: black;
 `;

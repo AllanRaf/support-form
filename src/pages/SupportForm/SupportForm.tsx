@@ -13,10 +13,11 @@ interface FormValues {
   name: string;
   email: string;
   description: string;
-  phoneNumber: string;
   selected: string;
-  text: string;
-  color: string;
+  softwareIssue: string;
+  phoneNumber: string;
+
+  option: string;
 }
 
 const SupportForm: React.FunctionComponent<SupportFormProps> = ({
@@ -26,10 +27,10 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
     name: "",
     email: "",
     description: "",
-    phoneNumber: "1234",
-    selected: "text",
-    text: "",
-    color: "",
+    selected: "generalQuestion",
+    phoneNumber: "",
+    softwareIssue: "",
+    option: "generalQuestion",
   };
 
   const topicOptions = ["General Question", "Software Issue", "phoneNumber"];
@@ -62,31 +63,7 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
 
             <CustomFieldInput name="email" />
 
-            <Field name="description">
-              {({ field }) => (
-                <InputContainer>
-                  <UserInputLabel>Description</UserInputLabel>
-                  <UserInputDescription
-                    name="description"
-                    placeholder="Please describe"
-                    {...field}
-                  />
-                  <ErrorMessage name="description" component={ErrorContainer} />
-                </InputContainer>
-              )}
-            </Field>
-
-            {/*     <Field
-              name="topic"
-              as="select"
-              onChange={(event) => {
-                console.log("select option changed", event.target.value);
-                setTopic(event.target.value);
-              }}
-            >
-              <DropDownField topicOptions={topicOptions} />
-            </Field>
-            <AdditionalInfoField fieldName={topic} /> */}
+            <CustomFieldInput name="description" inputType="textarea" />
 
             <div>
               <Field name="selected" component="select">
@@ -95,20 +72,16 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
                 <option label="Software Issue" value="softwareIssue" />
               </Field>
             </div>
-            {(values.selected === "text" && (
+            {(values.selected === "softwareIssue" && (
               <div>
-                <Field name="text" component="input" />
-                {errors && errors.text}
+                <Field name="softwareIssue" component="input" />
+                <ErrorMessage name="softwareIssue" component={ErrorContainer} />
               </div>
             )) ||
-              (values.selected === "color" && (
+              (values.selected === "phoneNumber" && (
                 <div>
-                  <Field name="color" component="select">
-                    <option value="red">red</option>
-                    <option value="blue">blue</option>
-                    <option value="green">green</option>
-                  </Field>
-                  {errors && errors.color}
+                  <Field name="phoneNumber" component="input" />
+                  <ErrorMessage name="phoneNumber" component={ErrorContainer} />
                 </div>
               ))}
 
