@@ -7,4 +7,9 @@ export const supportFormValidation = yup.object().shape({
     .label("Email")
     .email("Email address must be valid")
     .required("Email address must not be left blank"),
+
+  description: yup
+    .string()
+    .label("description")
+    .required("Description must not be blank"),
 });

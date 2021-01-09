@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import { Field, Form, Formik, ErrorMessage } from "formik";
+import { Field, Form, Formik, FormikHelpers, ErrorMessage } from "formik";
 import styled from "styled-components";
 import { supportFormValidation } from "./supportFormValidation";
 
 type SupportFormProps = RouteComponentProps;
+
+interface FormValues {
+  name: string;
+  email: string;
+  description: string;
+}
 
 const SupportForm: React.FunctionComponent<SupportFormProps> = ({
   history,
@@ -13,6 +19,13 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
     name: "",
     email: "",
     description: "",
+  };
+  const [supportData, setSupportData] = useState(initialValues);
+
+  const handleSubmit = (values: FormValues) => {
+    console.log("submitting", values);
+    setSupportData(values);
+    // history.replace("/contactsent");
   };
   return (
     <SupportFormContainer>
@@ -25,21 +38,18 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
+            handleSubmit(values);
           }, 400);
         }}
       >
         {({ isSubmitting }) => (
           <Form>
-            {/*          <Field type="text" name="name" />
-
-            <ErrorMessage name="name" component="div" /> */}
-
             <Field name="name">
               {({
                 field, // { name, value, onChange, onBlur }
               }) => (
                 <InputContainer>
-                  <label>name</label>
+                  <UserInputLabel>name</UserInputLabel>
                   <UserInput type="text" placeholder="name" {...field} />
                 </InputContainer>
               )}
@@ -47,20 +57,32 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
             <ErrorMessage name="name" component={ErrorContainer} />
 
             <Field name="email">
-              {({
-                field, // { name, value, onChange, onBlur }
-              }) => (
+              {({ field }) => (
                 <InputContainer>
-                  <label>email</label>
+                  <UserInputLabel>email</UserInputLabel>
                   <UserInput type="email" placeholder="email" {...field} />
                 </InputContainer>
               )}
             </Field>
             <ErrorMessage name="email" component={ErrorContainer} />
 
-            <button type="submit" disabled={isSubmitting}>
+            <Field name="description">
+              {({ field }) => (
+                <InputContainer>
+                  <UserInputLabel>Description</UserInputLabel>
+                  <UserInputDescription
+                    name="description"
+                    placeholder="Please describe"
+                    {...field}
+                  />
+                </InputContainer>
+              )}
+            </Field>
+            <ErrorMessage name="description" component={ErrorContainer} />
+
+            <SubmitButton type="submit" disabled={isSubmitting}>
               Submit
-            </button>
+            </SubmitButton>
           </Form>
         )}
       </Formik>
@@ -95,7 +117,28 @@ const UserInput = styled.input`
   border-bottom: 2px solid grey;
 `;
 
+const UserInputLabel = styled.label`
+  color: grey;
+  font-size: 1.5rem;
+`;
+
 const ErrorContainer = styled.div`
   font-size: 1.5rem;
   color: red;
+`;
+
+const SubmitButton = styled.button`
+  height: 2rem;
+  margin-top: 1rem;
+  border-radius: 1rem;
+  border-width: 0;
+  width: 25%;
+  outline: none;
+  background-color: green;
+  color: palevioletred;
+`;
+
+const UserInputDescription = styled.textarea`
+  width: 25%;
+  color: black;
 `;
