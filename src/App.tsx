@@ -1,10 +1,18 @@
 import React from "react";
 import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { SupportPage } from "./pages/SupportForm/SupportForm";
+import { ContactSubmitSuccessPage } from "./pages/SubmitSuccessPage/ContactSubmitSuccessPage";
 
 function App() {
   return (
     <div className="App">
-      <h1>Contact Form</h1>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={SupportPage} />
+          <Route path="/contactsent" component={ContactSubmitSuccessPage} />
+        </Switch>
+      </Router>
     </div>
   );
 }
