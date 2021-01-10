@@ -12,6 +12,13 @@ interface FormDataProps {
   softwareIssue?: string;
 }
 
+const displaySubmittedData = (formData: any) => {
+  Object.entries(formData).map(([key, value]) => {
+    console.log("key", key, "value", value);
+    return value;
+  });
+};
+
 export const ContactSubmitSuccessPage: React.FunctionComponent = () => {
   const params = useParams();
 
@@ -19,31 +26,35 @@ export const ContactSubmitSuccessPage: React.FunctionComponent = () => {
     formData: FormDataProps;
   }>;
   const formData = location.state.formData;
+  displaySubmittedData(formData);
   console.log("params are", params, "location", formData);
   return (
     <PageContainer>
       <h1>Message Submitted</h1>
       <span>Thank you for making contact with us</span>
 
-      <InfoBlock>
-        <span>name</span>
-        <InfoTitle>{formData.name}</InfoTitle>
-      </InfoBlock>
-
-      <InfoBlock>
-        <InfoTitle>{formData.email}</InfoTitle>
-      </InfoBlock>
-
-      <InfoBlock>{formData.description}</InfoBlock>
+      {Object.entries(formData).map(([key, value]) => {
+        console.log("key", key, "value", value);
+        return (
+          <InfoBlock>
+            <InfoTitle>{key}</InfoTitle>
+            <InfoTitle>{value}</InfoTitle>
+          </InfoBlock>
+        );
+      })}
     </PageContainer>
   );
 };
 
 const InfoBlock = styled.div`
-  justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
   display: flex;
+  border-radius: 2px;
+  width: 80%;
+  border: 1px solid #898f97;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0.5rem 0.5rem;
 `;
 
 const InfoTitle = styled.span`

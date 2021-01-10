@@ -5,6 +5,7 @@ import {
   ErrorContainer,
   InputContainer,
   ThemeSelect,
+  UserInputLabel,
 } from "../../styles/input-styles";
 import { Option } from "./Option";
 import { useTranslation } from "react-i18next";
@@ -24,12 +25,15 @@ export const SelectField: React.FunctionComponent = () => {
           field, // { name, value, onChange, onBlur }
         }) => {
           return (
-            <ThemeSelect {...field}>
-              {optionsList.map((option) => {
-                const { label, value } = option;
-                return <Option key={label} label={label} value={value} />;
-              })}
-            </ThemeSelect>
+            <>
+              <UserInputLabel>{t("topic")}</UserInputLabel>
+              <ThemeSelect {...field}>
+                {optionsList.map((option) => {
+                  const { label, value } = option;
+                  return <Option key={label} label={label} value={value} />;
+                })}
+              </ThemeSelect>
+            </>
           );
         }}
       </Field>

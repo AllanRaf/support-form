@@ -63,6 +63,7 @@ const PageContainer = styled.div`
   padding-right: 3rem;
   padding-top: 3rem;
   padding-bottom: 3rem;
+  align-items: center;
 `;
 
 export {

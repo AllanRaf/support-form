@@ -56,9 +56,8 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
     phoneNumber: "phoneNumber",
     softwareIssue: "softwareIssue",
   };
-  const [supportData, setSupportData] = useState(initialValues);
   const [topic, setTopic] = useState(topicOptions.generalQuestion);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const handleSubmit = (values: FormValues) => {
     console.log("submitting", values);
@@ -99,15 +98,13 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
 
             {values.selected === "softwareIssue" && (
               <InputContainer>
-                <UserInputLabel>
-                  Die softwarenversion in den richtigen Format eingeben
-                </UserInputLabel>
+                <UserInputLabel>{t("softwareVersion")}</UserInputLabel>
                 <SelectOption selectedOption="softwareIssue" />
               </InputContainer>
             )}
             {values.selected === "phoneNumber" && (
               <InputContainer>
-                <UserInputLabel>Telefonnummer eingeben</UserInputLabel>
+                <UserInputLabel>{t("phoneNumber")}</UserInputLabel>
                 <SelectOption selectedOption="phoneNumber" />
               </InputContainer>
             )}
@@ -148,4 +145,13 @@ const SubmitButton = styled.input`
   outline: none;
   background-color: #4f7fbe;
   color: #e0e7ef;
+  transition: all 0.2s ease;
+  &:hover {
+    transform: translateY(-1rem);
+    box-shadow: 2px 2px 3px black;
+  }
+  &:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
 `;
