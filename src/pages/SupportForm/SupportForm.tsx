@@ -11,6 +11,7 @@ import { supportFormValidation } from "./supportFormValidation";
 import { CustomFieldInput } from "./components/FieldInput";
 import { LanguageSelector } from "./components/LanguageSelector";
 import { useTranslation } from "react-i18next";
+import { UserInputLabel, InputContainer } from "./styles/input-styles";
 
 type SupportFormProps = RouteComponentProps;
 
@@ -68,7 +69,7 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
             handleSubmit(values);
-          }, 400);
+          }, 2000);
         }}
       >
         {({ isSubmitting, values, errors }) => (
@@ -79,22 +80,31 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
 
             <CustomFieldInput name="description" inputType="textarea" />
 
-            <div>
-              <SelectField />
-            </div>
+            <SelectField />
 
             {values.selected === "softwareIssue" && (
-              <SelectOption selectedOption="softwareIssue" />
+              <InputContainer>
+                <UserInputLabel>
+                  Die softwarenversion in den richtigen Format eingeben
+                </UserInputLabel>
+                <SelectOption selectedOption="softwareIssue" />
+              </InputContainer>
             )}
             {values.selected === "phoneNumber" && (
-              <SelectOption selectedOption="phoneNumber" />
+              <>
+                <UserInputLabel>Telefonnummer eingeben</UserInputLabel>
+                <SelectOption selectedOption="phoneNumber" />
+              </>
             )}
 
-            <SubmitButton
-              type="submit"
-              disabled={isSubmitting}
-              value={t("send")}
-            />
+            {isSubmitting && <div>submitting form</div>}
+            <InputContainer>
+              <SubmitButton
+                type="submit"
+                disabled={isSubmitting}
+                value={t("send")}
+              />
+            </InputContainer>
           </Form>
         )}
       </Formik>
@@ -108,15 +118,17 @@ const SupportFormContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding-right: 3rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 `;
 
 const SubmitButton = styled.input`
-  height: 2rem;
+  height: 3rem;
   margin-top: 1rem;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   border-width: 0;
   width: 25%;
   outline: none;
-  background-color: green;
-  color: palevioletred;
+  background-color: #4f7fbe;
+  color: #e0e7ef;
 `;

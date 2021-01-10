@@ -2,7 +2,11 @@ import React from "react";
 import { Field, ErrorMessage } from "formik";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { ErrorContainer, GeneralContainer } from "../styles/input-styles";
+import {
+  ErrorContainer,
+  GeneralContainer,
+  InputContainer,
+} from "../styles/input-styles";
 
 type CustomFieldInputProps = {
   name: string;
@@ -39,14 +43,6 @@ export const CustomFieldInput: React.FunctionComponent<CustomFieldInputProps> = 
   );
 };
 
-const InputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-top: 1rem;
-  padding-left: 5rem;
-`;
-
 const UserInputLabel = styled.label`
   height: 2rem;
   color: #898f97;
@@ -55,7 +51,7 @@ const UserInputLabel = styled.label`
 `;
 
 const UserInput = styled.input`
-  width: 40%;
+  width: 60%;
   font-size: 1.8rem;
   height: 3rem;
   padding: 1rem 1rem 1rem;
@@ -66,6 +62,12 @@ const UserInput = styled.input`
 `;
 
 const UserInputDescription = styled.textarea`
-  width: 25%;
+  width: 60%;
+  height: 15rem;
+  outline: none;
+  font-size: 1.2rem;
+  border: 1px solid #898f97;
+  padding: 1rem 1rem 1rem;
   color: black;
+  border-radius: 1px;
 `;

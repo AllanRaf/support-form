@@ -11,9 +11,9 @@ const ErrorContainer = styled.div`
 `;
 
 const OptionItem = styled.option`
-  width: 25%;
+  width: 40%;
   height: 1.5rem;
-  color: grey;
+  border: 1px solid #898f97;
 `;
 
 const ContainerDiv = styled.div`
@@ -34,6 +34,29 @@ const InputContainer = styled.div`
   padding-left: 5rem;
 `;
 
+const UserInputLabel = styled.label`
+  height: 2rem;
+  color: #898f97;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+`;
+
+const ThemeSelect = styled.select`
+  height: 3rem;
+  width: 30%;
+`;
+
+const UserInput = styled.input`
+  width: 60%;
+  font-size: 1.8rem;
+  height: 3rem;
+  padding: 1rem 1rem 1rem;
+  outline: none;
+  display: block;
+  border: 1px solid #898f97;
+  border-radius: 1px;
+`;
+
 export {
   ErrorContainer,
   GeneralContainer,
@@ -41,4 +64,7 @@ export {
   ContainerDiv,
   LanguageSelect,
   OptionItem,
+  ThemeSelect,
+  UserInputLabel,
+  UserInput,
 };
