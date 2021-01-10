@@ -1,6 +1,8 @@
 import React from "react";
 import { Field, ErrorMessage } from "formik";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+import { ErrorContainer, GeneralContainer } from "../styles/input-styles";
 
 type CustomFieldInputProps = {
   name: string;
@@ -11,13 +13,14 @@ export const CustomFieldInput: React.FunctionComponent<CustomFieldInputProps> = 
   name,
   inputType = "text",
 }) => {
+  const { t } = useTranslation();
   return (
     <Field name={name}>
       {({
         field, // { name, value, onChange, onBlur }
       }) => (
         <InputContainer>
-          <UserInputLabel>{name}</UserInputLabel>
+          <UserInputLabel>{t(name)}</UserInputLabel>
           {inputType === "text" ? (
             <UserInput type="text" placeholder={name} {...field} />
           ) : (
@@ -27,7 +30,9 @@ export const CustomFieldInput: React.FunctionComponent<CustomFieldInputProps> = 
               {...field}
             />
           )}
-          <ErrorMessage name={name} component={ErrorContainer} />
+          <GeneralContainer>
+            <ErrorMessage name={name} component={ErrorContainer} />
+          </GeneralContainer>
         </InputContainer>
       )}
     </Field>
@@ -37,11 +42,13 @@ export const CustomFieldInput: React.FunctionComponent<CustomFieldInputProps> = 
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   padding-top: 1rem;
+  padding-left: 5rem;
 `;
 
 const UserInputLabel = styled.label`
+  height: 2rem;
   color: grey;
   font-size: 1.5rem;
 `;
@@ -56,11 +63,6 @@ const UserInput = styled.input`
   border: none;
   border-radius: 0;
   border-bottom: 2px solid grey;
-`;
-
-const ErrorContainer = styled.div`
-  font-size: 1.5rem;
-  color: red;
 `;
 
 const UserInputDescription = styled.textarea`
