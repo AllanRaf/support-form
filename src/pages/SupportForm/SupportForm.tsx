@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import { Field, Form, Formik } from "formik";
+import { Field, Form, Formik, ErrorMessage } from "formik";
 import { DropDownField } from "./components/DropDownField";
 import { AdditionalInfoField } from "./components/AdditionalInfoField";
 import { SelectOption } from "./components/SelectOption";
 import styled from "styled-components";
 import { supportFormValidation } from "./supportFormValidation";
 import { CustomFieldInput } from "./components/FieldInput";
+import { LanguageSelector } from "./components/LanguageSelector";
 import { useTranslation } from "react-i18next";
 
 type SupportFormProps = RouteComponentProps;
@@ -55,6 +56,7 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
   return (
     <SupportFormContainer>
       <h1>{t("title")}</h1>
+      <LanguageSelector />
 
       <Formik
         initialValues={initialValues}
@@ -82,11 +84,13 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
                 /*       onChange={handleSelectChange}
                 value={topic} */
               >
-                <option label="General Question" value="generalQuestion" />
-                <option label="Call back" value="phoneNumber" />
-                <option label="Software Issue" value="softwareIssue" />
+                <option label={t("generalQuestion")} value="generalQuestion" />
+                <option label={t("callMeBack")} value="phoneNumber" />
+                <option label={t("softwareIssue")} value="softwareIssue" />
               </Field>
+              <ErrorMessage name="selected" component={ErrorContainer} />
             </div>
+
             {(values.selected === "softwareIssue" && (
               <SelectOption selectedOption="softwareIssue" />
             )) ||
@@ -121,4 +125,9 @@ const SubmitButton = styled.button`
   outline: none;
   background-color: green;
   color: palevioletred;
+`;
+
+const ErrorContainer = styled.div`
+  font-size: 1.5rem;
+  color: red;
 `;

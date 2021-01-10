@@ -1,6 +1,7 @@
 import React from "react";
 import { Field, ErrorMessage } from "formik";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
 type CustomFieldInputProps = {
   name: string;
@@ -11,13 +12,14 @@ export const CustomFieldInput: React.FunctionComponent<CustomFieldInputProps> = 
   name,
   inputType = "text",
 }) => {
+  const { t, i18n } = useTranslation();
   return (
     <Field name={name}>
       {({
         field, // { name, value, onChange, onBlur }
       }) => (
         <InputContainer>
-          <UserInputLabel>{name}</UserInputLabel>
+          <UserInputLabel>{t(name)}</UserInputLabel>
           {inputType === "text" ? (
             <UserInput type="text" placeholder={name} {...field} />
           ) : (
