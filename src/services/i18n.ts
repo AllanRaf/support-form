@@ -8,14 +8,11 @@ const resources = {
       name: "Name",
       email: "Email Address",
       description: "Description",
-      option: {
-        generalQuestion: "GeneralQuestion",
-        softwareIssue: "Software Issue",
-      },
       generalQuestion: "General Question",
       softwareIssue: "Softwarefehler",
       callMeBack: "Call Me Back",
       generalRequirment: "{{field}} must not be empty",
+      softwareFieldEmptyError: "Software version must be included",
     },
   },
   de: {
@@ -27,6 +24,7 @@ const resources = {
       generalQuestion: "Allgemeine Frage",
       callMeBack: "Ruckruf",
       generalRequirment: "{{field}} mussen nicht leer sein",
+      softwareFieldEmptyError: "Softwareversion muss eingegeben werden",
     },
   },
 };

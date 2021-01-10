@@ -49,20 +49,20 @@ const InputContainer = styled.div`
 
 const UserInputLabel = styled.label`
   height: 2rem;
-  color: grey;
+  color: #898f97;
   font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 `;
 
 const UserInput = styled.input`
-  width: 25%;
-  background-color: grey;
-  color: green;
+  width: 40%;
   font-size: 1.8rem;
-  padding: 1rem 1rem 1rem 5px;
+  height: 3rem;
+  padding: 1rem 1rem 1rem;
+  outline: none;
   display: block;
-  border: none;
-  border-radius: 0;
-  border-bottom: 2px solid grey;
+  border: 1px solid #898f97;
+  border-radius: 1px;
 `;
 
 const UserInputDescription = styled.textarea`

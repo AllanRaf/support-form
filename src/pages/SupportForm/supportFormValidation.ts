@@ -37,8 +37,8 @@ export const supportFormValidation = yup.lazy((values) => {
         return yup
           .string()
           .label("softwareIssue")
-          .required("Please enter software version")
-          .min(4, "too short");
+          .required(i18next.t("softwareFieldEmptyError"))
+          .matches(/\b\d{1,2}\.\d{1,2}\.\d{1,2}\b/, "wrong format");
       } else {
         return yup.mixed().notRequired();
       }
