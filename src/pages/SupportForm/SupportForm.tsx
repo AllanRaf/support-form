@@ -4,6 +4,7 @@ import { Field, Form, Formik, ErrorMessage } from "formik";
 import { DropDownField } from "./components/DropDownField";
 import { AdditionalInfoField } from "./components/AdditionalInfoField";
 import { SelectOption } from "./components/SelectOption";
+import { SelectField } from "./components/select/SelectField";
 import styled from "styled-components";
 import { supportFormValidation } from "./supportFormValidation";
 import { CustomFieldInput } from "./components/FieldInput";
@@ -78,25 +79,15 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
             <CustomFieldInput name="description" inputType="textarea" />
 
             <div>
-              <Field
-                name="selected"
-                component="select"
-                /*       onChange={handleSelectChange}
-                value={topic} */
-              >
-                <option label={t("generalQuestion")} value="generalQuestion" />
-                <option label={t("callMeBack")} value="phoneNumber" />
-                <option label={t("softwareIssue")} value="softwareIssue" />
-              </Field>
-              <ErrorMessage name="selected" component={ErrorContainer} />
+              <SelectField />
             </div>
 
-            {(values.selected === "softwareIssue" && (
+            {values.selected === "softwareIssue" && (
               <SelectOption selectedOption="softwareIssue" />
-            )) ||
-              (values.selected === "phoneNumber" && (
-                <SelectOption selectedOption="phoneNumber" />
-              ))}
+            )}
+            {values.selected === "phoneNumber" && (
+              <SelectOption selectedOption="phoneNumber" />
+            )}
 
             <SubmitButton type="submit" disabled={isSubmitting}>
               Submit
@@ -111,7 +102,6 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
 export const SupportPage = withRouter(SupportForm);
 
 const SupportFormContainer = styled.div`
-  justify-content: center;
   display: flex;
   flex-direction: column;
 `;
@@ -125,9 +115,4 @@ const SubmitButton = styled.button`
   outline: none;
   background-color: green;
   color: palevioletred;
-`;
-
-const ErrorContainer = styled.div`
-  font-size: 1.5rem;
-  color: red;
 `;

@@ -12,7 +12,7 @@ export const CustomFieldInput: React.FunctionComponent<CustomFieldInputProps> = 
   name,
   inputType = "text",
 }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <Field name={name}>
       {({
@@ -39,8 +39,9 @@ export const CustomFieldInput: React.FunctionComponent<CustomFieldInputProps> = 
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   padding-top: 1rem;
+  padding-left: 5rem;
 `;
 
 const UserInputLabel = styled.label`

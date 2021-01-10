@@ -18,6 +18,7 @@ export const SelectOption: React.FunctionComponent<SelectOptionProps> = ({
 };
 
 const ErrorContainer = styled.div`
+  height: 2rem;
   font-size: 1.5rem;
   color: red;
 `;

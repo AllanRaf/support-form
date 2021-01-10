@@ -13,12 +13,12 @@ export const supportFormValidation = yup.lazy((values) => {
       .string()
       .label("Email")
       .email("Email address must be valid")
-      .required("Email address must not be left blank"),
+      .required(i18next.t("generalRequirment", { field: "email" })),
 
     description: yup
       .string()
       .label("description")
-      .required("Description must not be blank"),
+      .required(i18next.t("generalRequirment", { field: "description" })),
 
     phoneNumber: yup.lazy(() => {
       if (values.selected === "phoneNumber") {

@@ -1,7 +1,6 @@
 import i18next from "i18next";
 import { initReactI18next } from "react-i18next";
-// "Inline" English and Arabic translations.
-// We can localize to any language and any number of languages.
+
 const resources = {
   en: {
     translation: {
@@ -16,7 +15,7 @@ const resources = {
       generalQuestion: "General Question",
       softwareIssue: "Softwarefehler",
       callMeBack: "Call Me Back",
-      generalRequirment: "This is needed {{field}}",
+      generalRequirment: "{{field}} must not be empty",
     },
   },
   de: {
@@ -27,6 +26,7 @@ const resources = {
       description: "Beschreibung",
       generalQuestion: "Allgemeine Frage",
       callMeBack: "Ruckruf",
+      generalRequirment: "{{field}} mussen nicht leer sein",
     },
   },
 };

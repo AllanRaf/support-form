@@ -1,5 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { LanguageSelect } from "../styles/input-styles";
 
 export const LanguageSelector: React.FunctionComponent = () => {
   const { i18n } = useTranslation();
@@ -8,9 +9,9 @@ export const LanguageSelector: React.FunctionComponent = () => {
     i18n.changeLanguage(event.target.value);
   };
   return (
-    <select name="language" onChange={handleChange}>
+    <LanguageSelect name="language" onChange={handleChange}>
       <option label="🇩🇪" value="de" />
       <option label="🇬🇧" value="en" />
-    </select>
+    </LanguageSelect>
   );
 };
