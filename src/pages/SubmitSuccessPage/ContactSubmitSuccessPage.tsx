@@ -1,7 +1,8 @@
 import React from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Location } from "history";
-import { PageContainer } from "../SupportForm/styles/input-styles";
+import { PageContainer, BigTitle } from "../SupportForm/styles";
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
 interface FormDataProps {
@@ -20,25 +21,22 @@ const displaySubmittedData = (formData: any) => {
 };
 
 export const ContactSubmitSuccessPage: React.FunctionComponent = () => {
-  const params = useParams();
-
+  const { t } = useTranslation();
   const location = useLocation() as Location<{
     formData: FormDataProps;
   }>;
   const formData = location.state.formData;
-  displaySubmittedData(formData);
-  console.log("params are", params, "location", formData);
+
   return (
     <PageContainer>
-      <h1>Message Submitted</h1>
-      <span>Thank you for making contact with us</span>
+      <BigTitle>{t("formSubmitted")}</BigTitle>
 
       {Object.entries(formData).map(([key, value]) => {
         console.log("key", key, "value", value);
         return (
-          <InfoBlock>
-            <InfoTitle>{key}</InfoTitle>
-            <InfoTitle>{value}</InfoTitle>
+          <InfoBlock key={key}>
+            <InfoTitle>{t(key)}</InfoTitle>
+            <InfoTitle>{t(value)}</InfoTitle>
           </InfoBlock>
         );
       })}

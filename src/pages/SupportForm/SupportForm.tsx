@@ -1,17 +1,12 @@
 import React, { useState } from "react";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { Form, Formik } from "formik";
-import { DropDownField } from "./components/DropDownField";
-import { AdditionalInfoField } from "./components/AdditionalInfoField";
-import { BigTitle } from "./styles/typography-styles";
+import { BigTitle, UserInputLabel, InputContainer } from "./styles";
 import { SelectOption } from "./components/SelectOption";
-import { SelectField } from "./components/select/SelectField";
 import styled from "styled-components";
 import { supportFormValidation } from "./supportFormValidation";
-import { CustomFieldInput } from "./components/FieldInput";
-import { LanguageSelector } from "./components/LanguageSelector";
+import { CustomFieldInput, LanguageSelector, SelectField } from "./components";
 import { useTranslation } from "react-i18next";
-import { UserInputLabel, InputContainer } from "./styles/input-styles";
 
 type SupportFormProps = RouteComponentProps;
 

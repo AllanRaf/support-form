@@ -21,6 +21,7 @@ const resources = {
       softwareFieldEmptyError: "Software version must be included",
       softwareFieldWrongFormat:
         "Please provide software version in the correct format",
+      formSubmitted: "Form Submitted",
     },
   },
   de: {
@@ -40,6 +41,7 @@ const resources = {
       softwareFieldEmptyError: "Softwareversion muss eingegeben werden",
       softwareFieldWrongFormat:
         "Bitte die Softwarenversion in die richtige Format eingeben",
+      formSubmitted: "Formular Wurde Abgeschickt",
     },
   },
 };

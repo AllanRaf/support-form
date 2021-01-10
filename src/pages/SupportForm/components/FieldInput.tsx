@@ -24,7 +24,7 @@ export const CustomFieldInput: React.FunctionComponent<CustomFieldInputProps> = 
         field, // { name, value, onChange, onBlur }
       }) => (
         <InputContainer>
-          <UserInputLabel>{t(name)}</UserInputLabel>
+          <UserInputLabel htmlFor={name}>{t(name)}</UserInputLabel>
           {inputType === "text" ? (
             <UserInput type="text" placeholder={name} {...field} />
           ) : (
