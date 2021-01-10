@@ -57,6 +57,14 @@ const UserInput = styled.input`
   border-radius: 1px;
 `;
 
+const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-right: 3rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+`;
+
 export {
   ErrorContainer,
   GeneralContainer,
@@ -64,6 +72,7 @@ export {
   ContainerDiv,
   LanguageSelect,
   OptionItem,
+  PageContainer,
   ThemeSelect,
   UserInputLabel,
   UserInput,

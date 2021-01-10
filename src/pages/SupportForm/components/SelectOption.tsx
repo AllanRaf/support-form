@@ -15,13 +15,13 @@ export const SelectOption: React.FunctionComponent<SelectOptionProps> = ({
   selectedOption,
 }) => {
   return (
-    <InputContainer>
+    <>
       <Field name={selectedOption}>
         {({
           field, // { name, value, onChange, onBlur }
         }) => <UserInput type="text" placeholder="example" {...field} />}
       </Field>
       <ErrorMessage name={selectedOption} component={ErrorContainer} />
-    </InputContainer>
+    </>
   );
 };

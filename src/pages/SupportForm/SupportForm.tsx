@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import { Field, Form, Formik, ErrorMessage } from "formik";
+import { Form, Formik } from "formik";
 import { DropDownField } from "./components/DropDownField";
 import { AdditionalInfoField } from "./components/AdditionalInfoField";
 import { BigTitle } from "./styles/typography-styles";
@@ -23,6 +23,21 @@ interface FormValues {
   softwareIssue: string;
   phoneNumber: string;
 }
+
+const extractFormData = (formData: FormValues) => {
+  let sanitisedFormData;
+
+  for (const fieldData in formData) {
+    delete formData["selected"];
+
+    if (!formData[fieldData]) {
+      delete formData[fieldData];
+    }
+    sanitisedFormData = formData;
+  }
+  console.log("sanitised form data", sanitisedFormData);
+  return sanitisedFormData;
+};
 
 const SupportForm: React.FunctionComponent<SupportFormProps> = ({
   history,
@@ -47,9 +62,11 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
 
   const handleSubmit = (values: FormValues) => {
     console.log("submitting", values);
-    i18n.changeLanguage("en");
-    setSupportData(values);
-    // history.replace("/contactsent");
+    const formData = extractFormData(values);
+
+    //setSupportData(values);
+
+    history.push({ pathname: "/contactsent", state: { formData } });
   };
 
   const handleSelectChange = (event) => {
@@ -78,8 +95,6 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
 
             <CustomFieldInput name="email" />
 
-            <CustomFieldInput name="description" inputType="textarea" />
-
             <SelectField />
 
             {values.selected === "softwareIssue" && (
@@ -91,11 +106,13 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
               </InputContainer>
             )}
             {values.selected === "phoneNumber" && (
-              <>
+              <InputContainer>
                 <UserInputLabel>Telefonnummer eingeben</UserInputLabel>
                 <SelectOption selectedOption="phoneNumber" />
-              </>
+              </InputContainer>
             )}
+
+            <CustomFieldInput name="description" inputType="textarea" />
 
             {isSubmitting && <div>submitting form</div>}
             <InputContainer>

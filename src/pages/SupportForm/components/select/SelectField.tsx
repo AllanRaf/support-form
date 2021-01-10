@@ -4,7 +4,6 @@ import {
   ContainerDiv,
   ErrorContainer,
   InputContainer,
-  UserInputLabel,
   ThemeSelect,
 } from "../../styles/input-styles";
 import { Option } from "./Option";
@@ -28,7 +27,7 @@ export const SelectField: React.FunctionComponent = () => {
             <ThemeSelect {...field}>
               {optionsList.map((option) => {
                 const { label, value } = option;
-                return <Option key="label" label={label} value={value} />;
+                return <Option key={label} label={label} value={value} />;
               })}
             </ThemeSelect>
           );
