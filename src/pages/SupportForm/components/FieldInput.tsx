@@ -30,7 +30,7 @@ export const CustomFieldInput: React.FunctionComponent<CustomFieldInputProps> = 
           ) : (
             <UserInputDescription
               name="description"
-              placeholder="Please describe"
+              placeholder={t("descriptionPlaceholderText")}
               {...field}
             />
           )}
@@ -65,7 +65,7 @@ const UserInputDescription = styled.textarea`
   width: 60%;
   height: 15rem;
   outline: none;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   border: 1px solid #898f97;
   padding: 1rem 1rem 1rem;
   color: black;

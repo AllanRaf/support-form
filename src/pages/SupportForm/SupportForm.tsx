@@ -63,10 +63,6 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
     history.push({ pathname: "/contactsent", state: { formData } });
   };
 
-  const handleSelectChange = (event) => {
-    console.log("handleSelectChange", event.target.value);
-    setTopic(event.target.value);
-  };
   return (
     <SupportFormContainer>
       <BigTitle>{t("title")}</BigTitle>
@@ -77,10 +73,9 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
         validationSchema={supportFormValidation}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
             handleSubmit(values);
-          }, 2000);
+          }, 1000);
         }}
       >
         {({ isSubmitting, values, errors }) => (
