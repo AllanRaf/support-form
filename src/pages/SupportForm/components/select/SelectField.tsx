@@ -1,6 +1,10 @@
 import React from "react";
 import { Field, ErrorMessage } from "formik";
-import { ContainerDiv, ErrorContainer } from "../../styles/input-styles";
+import {
+  ContainerDiv,
+  ErrorContainer,
+  InputContainer,
+} from "../../styles/input-styles";
 import { Option } from "./Option";
 import { useTranslation } from "react-i18next";
 
@@ -13,7 +17,7 @@ export const SelectField: React.FunctionComponent = () => {
   ];
 
   return (
-    <>
+    <InputContainer>
       <Field name="selected" component="select">
         {optionsList.map((option) => {
           const { label, value } = option;
@@ -23,7 +27,7 @@ export const SelectField: React.FunctionComponent = () => {
       <ContainerDiv>
         <ErrorMessage name="selected" component={ErrorContainer} />
       </ContainerDiv>
-    </>
+    </InputContainer>
   );
 };
 

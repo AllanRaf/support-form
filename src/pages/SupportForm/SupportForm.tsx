@@ -3,6 +3,7 @@ import { withRouter, RouteComponentProps } from "react-router-dom";
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import { DropDownField } from "./components/DropDownField";
 import { AdditionalInfoField } from "./components/AdditionalInfoField";
+import { BigTitle } from "./styles/typography-styles";
 import { SelectOption } from "./components/SelectOption";
 import { SelectField } from "./components/select/SelectField";
 import styled from "styled-components";
@@ -56,7 +57,7 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
   };
   return (
     <SupportFormContainer>
-      <h1>{t("title")}</h1>
+      <BigTitle>{t("title")}</BigTitle>
       <LanguageSelector />
 
       <Formik
@@ -89,9 +90,11 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
               <SelectOption selectedOption="phoneNumber" />
             )}
 
-            <SubmitButton type="submit" disabled={isSubmitting}>
-              Submit
-            </SubmitButton>
+            <SubmitButton
+              type="submit"
+              disabled={isSubmitting}
+              value={t("send")}
+            />
           </Form>
         )}
       </Formik>
@@ -104,9 +107,10 @@ export const SupportPage = withRouter(SupportForm);
 const SupportFormContainer = styled.div`
   display: flex;
   flex-direction: column;
+  padding-right: 3rem;
 `;
 
-const SubmitButton = styled.button`
+const SubmitButton = styled.input`
   height: 2rem;
   margin-top: 1rem;
   border-radius: 1rem;

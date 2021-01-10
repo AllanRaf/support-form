@@ -23,12 +23,21 @@ const ContainerDiv = styled.div`
 const LanguageSelect = styled.select`
   align-self: flex-end;
   height: 2rem;
-  width: 10rem;
+  width: 5rem;
+`;
+
+const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 1rem;
+  padding-left: 5rem;
 `;
 
 export {
   ErrorContainer,
   GeneralContainer,
+  InputContainer,
   ContainerDiv,
   LanguageSelect,
   OptionItem,

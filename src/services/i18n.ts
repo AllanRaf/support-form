@@ -11,8 +11,11 @@ const resources = {
       generalQuestion: "General Question",
       softwareIssue: "Softwarefehler",
       callMeBack: "Call Me Back",
+      send: "send message",
       generalRequirment: "{{field}} must not be empty",
       softwareFieldEmptyError: "Software version must be included",
+      softwareFieldWrongFormat:
+        "Please provide software version in the correct format",
     },
   },
   de: {
@@ -23,8 +26,11 @@ const resources = {
       description: "Beschreibung",
       generalQuestion: "Allgemeine Frage",
       callMeBack: "Ruckruf",
+      send: "Nachricht Absenden",
       generalRequirment: "{{field}} mussen nicht leer sein",
       softwareFieldEmptyError: "Softwareversion muss eingegeben werden",
+      softwareFieldWrongFormat:
+        "Bitte die Softwarenversion in die richtige Format eingeben",
     },
   },
 };
