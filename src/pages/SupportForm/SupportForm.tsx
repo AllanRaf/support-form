@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import { Field, Form, Formik, ErrorMessage } from "formik";
+import { Field, Form, Formik } from "formik";
 import { DropDownField } from "./components/DropDownField";
 import { AdditionalInfoField } from "./components/AdditionalInfoField";
 import { SelectOption } from "./components/SelectOption";
 import styled from "styled-components";
 import { supportFormValidation } from "./supportFormValidation";
 import { CustomFieldInput } from "./components/FieldInput";
+import { useTranslation } from "react-i18next";
 
 type SupportFormProps = RouteComponentProps;
 
@@ -38,9 +39,11 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
   };
   const [supportData, setSupportData] = useState(initialValues);
   const [topic, setTopic] = useState(topicOptions.generalQuestion);
+  const { t, i18n } = useTranslation();
 
   const handleSubmit = (values: FormValues) => {
     console.log("submitting", values);
+    i18n.changeLanguage("en");
     setSupportData(values);
     // history.replace("/contactsent");
   };
@@ -51,7 +54,7 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
   };
   return (
     <SupportFormContainer>
-      <h1>Send us a message</h1>
+      <h1>{t("title")}</h1>
 
       <Formik
         initialValues={initialValues}
@@ -109,35 +112,6 @@ const SupportFormContainer = styled.div`
   flex-direction: column;
 `;
 
-const InputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 1rem;
-`;
-
-const UserInput = styled.input`
-  width: 25%;
-  background-color: grey;
-  color: green;
-  font-size: 1.8rem;
-  padding: 1rem 1rem 1rem 5px;
-  display: block;
-  border: none;
-  border-radius: 0;
-  border-bottom: 2px solid grey;
-`;
-
-const UserInputLabel = styled.label`
-  color: grey;
-  font-size: 1.5rem;
-`;
-
-const ErrorContainer = styled.div`
-  font-size: 1.5rem;
-  color: red;
-`;
-
 const SubmitButton = styled.button`
   height: 2rem;
   margin-top: 1rem;
@@ -147,9 +121,4 @@ const SubmitButton = styled.button`
   outline: none;
   background-color: green;
   color: palevioletred;
-`;
-
-const UserInputDescription = styled.textarea`
-  width: 25%;
-  color: black;
 `;
