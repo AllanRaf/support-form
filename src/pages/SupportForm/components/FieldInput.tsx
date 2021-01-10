@@ -2,6 +2,7 @@ import React from "react";
 import { Field, ErrorMessage } from "formik";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
+import { ErrorContainer, GeneralContainer } from "../styles/input-styles";
 
 type CustomFieldInputProps = {
   name: string;
@@ -29,7 +30,9 @@ export const CustomFieldInput: React.FunctionComponent<CustomFieldInputProps> = 
               {...field}
             />
           )}
-          <ErrorMessage name={name} component={ErrorContainer} />
+          <GeneralContainer>
+            <ErrorMessage name={name} component={ErrorContainer} />
+          </GeneralContainer>
         </InputContainer>
       )}
     </Field>
@@ -45,6 +48,7 @@ const InputContainer = styled.div`
 `;
 
 const UserInputLabel = styled.label`
+  height: 2rem;
   color: grey;
   font-size: 1.5rem;
 `;
@@ -59,11 +63,6 @@ const UserInput = styled.input`
   border: none;
   border-radius: 0;
   border-bottom: 2px solid grey;
-`;
-
-const ErrorContainer = styled.div`
-  font-size: 1.5rem;
-  color: red;
 `;
 
 const UserInputDescription = styled.textarea`

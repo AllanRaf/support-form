@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+const GeneralContainer = styled.div`
+  padding-top: 0.5rem;
+  height: 3rem;
+`;
+
 const ErrorContainer = styled.div`
   font-size: 1.5rem;
   color: red;
@@ -21,4 +26,10 @@ const LanguageSelect = styled.select`
   width: 10rem;
 `;
 
-export { ErrorContainer, ContainerDiv, LanguageSelect, OptionItem };
+export {
+  ErrorContainer,
+  GeneralContainer,
+  ContainerDiv,
+  LanguageSelect,
+  OptionItem,
+};
