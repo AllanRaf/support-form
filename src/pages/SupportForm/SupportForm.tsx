@@ -2,6 +2,7 @@ import React from "react";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { Form, Formik } from "formik";
 import { BigTitle } from "./styles";
+import { useSubmitForm } from "../../hooks/api-calls";
 import { SelectOption } from "./components/SelectOption";
 import styled from "styled-components";
 import { supportFormValidation } from "./supportFormValidation";
@@ -9,14 +10,14 @@ import {
   UserInputBlock,
   LanguageSelector,
   SelectField,
-  OptionalInputBlock,
   ButtonBlock,
+  InputWrapper,
 } from "./components";
 import { useTranslation } from "react-i18next";
 
 type SupportFormProps = RouteComponentProps;
 
-interface FormValues {
+export interface FormValues {
   name: string;
   email: string;
   description: string;
@@ -24,21 +25,6 @@ interface FormValues {
   softwareIssue: string;
   phoneNumber: string;
 }
-
-const extractFormData = (formData: FormValues) => {
-  let sanitisedFormData;
-
-  for (const fieldData in formData) {
-    delete formData["selected"];
-
-    if (!formData[fieldData]) {
-      delete formData[fieldData];
-    }
-    sanitisedFormData = formData;
-  }
-  console.log("sanitised form data", sanitisedFormData);
-  return sanitisedFormData;
-};
 
 const SupportForm: React.FunctionComponent<SupportFormProps> = ({
   history,
@@ -52,16 +38,8 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
     softwareIssue: "",
   };
 
+  const handleSubmit = useSubmitForm();
   const { t } = useTranslation();
-
-  const handleSubmit = (values: FormValues) => {
-    console.log("submitting", values);
-    const formData = extractFormData(values);
-
-    //setSupportData(values);
-
-    history.push({ pathname: "/contactsent", state: { formData } });
-  };
 
   return (
     <SupportFormContainer>
@@ -85,8 +63,6 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
             <UserInputBlock name="email" />
 
             <SelectField />
-
-            {/*  <OptionalInputBlock nameOfInputBlockToShow={values.selected} /> */}
 
             <UserInputBlock name="description" inputType="textarea" />
 

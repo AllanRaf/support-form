@@ -13,12 +13,13 @@ interface FormDataProps {
   softwareIssue?: string;
 }
 
-const displaySubmittedData = (formData: any) => {
-  Object.entries(formData).map(([key, value]) => {
-    console.log("key", key, "value", value);
-    return value;
-  });
-};
+const formDataFieldsOrder = [
+  "name",
+  "email",
+  "phoneNumber",
+  "softwareIssue",
+  "description",
+];
 
 export const ContactSubmitSuccessPage: React.FunctionComponent = () => {
   const { t } = useTranslation();
@@ -29,16 +30,21 @@ export const ContactSubmitSuccessPage: React.FunctionComponent = () => {
 
   return (
     <PageContainer>
-      <BigTitle>{t("formSubmitted")}</BigTitle>
+      <BigTitle>
+        {t("formSubmitted")} {JSON.stringify(new Date())}
+      </BigTitle>
 
-      {Object.entries(formData).map(([key, value]) => {
-        console.log("key", key, "value", value);
-        return (
-          <InfoBlock key={key}>
-            <InfoTitle>{t(key)}</InfoTitle>
-            <InfoTitle>{t(value)}</InfoTitle>
-          </InfoBlock>
-        );
+      {formDataFieldsOrder.map((fieldName) => {
+        if (formData.hasOwnProperty(fieldName)) {
+          return (
+            <InfoBlock key={fieldName}>
+              <InfoTitle>{t(fieldName)}</InfoTitle>
+              <InfoTitle>{t(formData[fieldName])}</InfoTitle>
+            </InfoBlock>
+          );
+        } else {
+          return null;
+        }
       })}
     </PageContainer>
   );

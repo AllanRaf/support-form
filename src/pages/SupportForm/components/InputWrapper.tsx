@@ -14,33 +14,27 @@ interface WrappedInputProps {
   name: string;
 }
 
-export const InputWrapper = (
-  WrappedInput: React.FunctionComponent<WrappedInputProps>,
-  name: string
-) => {
-  const InputWithProps: React.FunctionComponent = () => {
-    const { t } = useTranslation();
-    return (
-      <>
-        <Field name={name}>
-          {({
-            field, // { name, value, onChange, onBlur }
-          }) => (
-            <InputContainer>
-              <UserInputLabel htmlFor={name}>{t(name)}</UserInputLabel>
+export const InputWrapper = ({ WrappedInput, name }) => {
+  const { t } = useTranslation();
+  return (
+    <>
+      <Field name={name}>
+        {({
+          field, // { name, value, onChange, onBlur }
+        }) => (
+          <InputContainer>
+            <UserInputLabel htmlFor={name}>{t(name)}</UserInputLabel>
 
-              <WrappedInput placeholder={t(`${name}Format`)} {...field} />
+            <WrappedInput placeholder={t(`${name}Format`)} {...field} />
 
-              <GeneralContainer>
-                <ErrorMessage name={name} component={ErrorContainer} />
-              </GeneralContainer>
-            </InputContainer>
-          )}
-        </Field>
-      </>
-    );
-  };
-  return InputWithProps;
+            <GeneralContainer>
+              <ErrorMessage name={name} component={ErrorContainer} />
+            </GeneralContainer>
+          </InputContainer>
+        )}
+      </Field>
+    </>
+  );
 };
 
 /* type InputWrapperProps = {
@@ -73,6 +67,6 @@ export const InputWrapper: React.FunctionComponent<InputWrapperProps> = (
   );
 }; */
 
-export const WithWhateverComponent = (name) => {
+/* export const WithWhateverComponent = (name) => {
   InputWrapper(UserInput, name);
-};
+}; */
