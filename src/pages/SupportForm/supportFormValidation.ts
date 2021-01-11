@@ -1,20 +1,24 @@
 import * as yup from "yup";
+import i18next from "i18next";
 
 export const supportFormValidation = yup.lazy((values) => {
   console.log("yup values", values);
 
   return yup.object().shape({
-    name: yup.string().label("name").required("name must not be left blank"),
+    name: yup
+      .string()
+      .label("name")
+      .required(i18next.t("generalRequirment", { field: "name" })),
     email: yup
       .string()
       .label("Email")
       .email("Email address must be valid")
-      .required("Email address must not be left blank"),
+      .required(i18next.t("generalRequirment", { field: "email" })),
 
     description: yup
       .string()
       .label("description")
-      .required("Description must not be blank"),
+      .required(i18next.t("generalRequirment", { field: "description" })),
 
     phoneNumber: yup.lazy(() => {
       if (values.selected === "phoneNumber") {
@@ -22,6 +26,7 @@ export const supportFormValidation = yup.lazy((values) => {
           .string()
           .label("phoneNumber")
           .required("Please enter phone number")
+          .matches(/^[0-9]*$/, "Please only use numbers")
           .min(2, "too short");
       } else {
         return yup.mixed().notRequired();
@@ -29,6 +34,26 @@ export const supportFormValidation = yup.lazy((values) => {
     }),
     softwareIssue: yup.lazy(() => {
       if (values.selected === "softwareIssue") {
+        return yup
+          .string()
+          .label("softwareIssue")
+          .required(i18next.t("softwareFieldEmptyError"))
+          .matches(
+            /^\b\d{1,2}\.\d{1,2}\.\d{1,2}\b$/,
+            i18next.t("softwareFieldWrongFormat")
+          );
+      } else {
+        return yup.mixed().notRequired();
+      }
+    }),
+    selected: yup.lazy(() => {
+      if (values.selected === "phoneNumber") {
+        return yup
+          .string()
+          .label("phoneNumber")
+          .required("Please enter phone number selected")
+          .min(2, "too short");
+      } else if (values.selected === "softwareIssue") {
         return yup
           .string()
           .label("softwareIssue")

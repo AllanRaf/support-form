@@ -1,69 +1,42 @@
 import React from "react";
-import { Field, ErrorMessage } from "formik";
-import styled from "styled-components";
+import { Field } from "formik";
+
+import { useTranslation } from "react-i18next";
+import {
+  ErrorContainer,
+  GeneralContainer,
+  InputContainer,
+  UserInputLabel,
+  UserInputDescription,
+  UserInput,
+} from "../styles/input-styles";
+import { ErrorMessageBlock } from "./ErrorMessageBlock";
 
 type CustomFieldInputProps = {
   name: string;
   inputType?: string;
 };
 
-export const CustomFieldInput: React.FunctionComponent<CustomFieldInputProps> = ({
+export const UserInputBlock: React.FunctionComponent<CustomFieldInputProps> = ({
   name,
   inputType = "text",
 }) => {
+  const { t } = useTranslation();
   return (
     <Field name={name}>
       {({
         field, // { name, value, onChange, onBlur }
       }) => (
         <InputContainer>
-          <UserInputLabel>{name}</UserInputLabel>
+          <UserInputLabel htmlFor={name}>{t(name)}</UserInputLabel>
           {inputType === "text" ? (
-            <UserInput type="text" placeholder={name} {...field} />
+            <UserInput placeholder={t(`${name}Format`)} {...field} />
           ) : (
-            <UserInputDescription
-              name="description"
-              placeholder="Please describe"
-              {...field}
-            />
+            <UserInputDescription placeholder={t(`${name}Format`)} {...field} />
           )}
-          <ErrorMessage name={name} component={ErrorContainer} />
+          <ErrorMessageBlock name={name} />
         </InputContainer>
       )}
     </Field>
   );
 };
-
-const InputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 1rem;
-`;
-
-const UserInputLabel = styled.label`
-  color: grey;
-  font-size: 1.5rem;
-`;
-
-const UserInput = styled.input`
-  width: 25%;
-  background-color: grey;
-  color: green;
-  font-size: 1.8rem;
-  padding: 1rem 1rem 1rem 5px;
-  display: block;
-  border: none;
-  border-radius: 0;
-  border-bottom: 2px solid grey;
-`;
-
-const ErrorContainer = styled.div`
-  font-size: 1.5rem;
-  color: red;
-`;
-
-const UserInputDescription = styled.textarea`
-  width: 25%;
-  color: black;
-`;

@@ -1,6 +1,7 @@
 import React from "react";
 import { Field, ErrorMessage } from "formik";
-import styled from "styled-components";
+import { ErrorContainer, UserInput } from "../styles/input-styles";
+import { useTranslation } from "react-i18next";
 
 type SelectOptionProps = {
   selectedOption: string;
@@ -9,15 +10,21 @@ type SelectOptionProps = {
 export const SelectOption: React.FunctionComponent<SelectOptionProps> = ({
   selectedOption,
 }) => {
+  const { t } = useTranslation();
   return (
-    <div>
-      <Field name={selectedOption} component="input" />
+    <>
+      <Field name={selectedOption}>
+        {({
+          field, // { name, value, onChange, onBlur }
+        }) => (
+          <UserInput
+            type="text"
+            placeholder={t(`${selectedOption}Format`)}
+            {...field}
+          />
+        )}
+      </Field>
       <ErrorMessage name={selectedOption} component={ErrorContainer} />
-    </div>
+    </>
   );
 };
-
-const ErrorContainer = styled.div`
-  font-size: 1.5rem;
-  color: red;
-`;
