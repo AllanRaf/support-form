@@ -8,12 +8,12 @@ import { supportFormValidation } from "./supportFormValidation";
 import {
   UserInputBlock,
   LanguageSelector,
-  SelectField,
+  SelectInputBlock,
   ButtonBlock,
 } from "./components";
 import { useTranslation } from "react-i18next";
 
-type SupportFormProps = RouteComponentProps;
+type SupportPageProps = {};
 
 export interface FormValues {
   name: string;
@@ -24,7 +24,7 @@ export interface FormValues {
   phoneNumber: string;
 }
 
-export const SupportPage: React.FunctionComponent<SupportFormProps> = () => {
+export const SupportPage: React.FunctionComponent<SupportPageProps> = () => {
   const initialValues = {
     name: "",
     email: "",
@@ -55,10 +55,8 @@ export const SupportPage: React.FunctionComponent<SupportFormProps> = () => {
         {({ isSubmitting, values, isValid }) => (
           <Form>
             <UserInputBlock name="name" />
-
             <UserInputBlock name="email" />
-
-            <SelectField />
+            <SelectInputBlock />
 
             <UserInputBlock name="description" inputType="textarea" />
 

@@ -8,9 +8,8 @@ import {
 import { Option } from "./Option";
 import { OptionalInputBlock } from "../index";
 import { useTranslation } from "react-i18next";
-import { UserInputBlock } from "../FieldInput";
 
-export const SelectField: React.FunctionComponent = () => {
+export const SelectInputBlock: React.FunctionComponent = () => {
   const { t } = useTranslation();
   const optionsList = [
     { label: t("generalQuestion"), value: "generalQuestion" },
@@ -21,9 +20,7 @@ export const SelectField: React.FunctionComponent = () => {
   return (
     <InputContainer>
       <Field name="selected">
-        {({
-          field, // { name, value, onChange, onBlur }
-        }) => {
+        {({ field }) => {
           console.log("onChange", field.value);
           return (
             <>
@@ -34,6 +31,7 @@ export const SelectField: React.FunctionComponent = () => {
                   return <Option key={label} label={label} value={value} />;
                 })}
               </ThemeSelect>
+              {/*Depending on the theme there may be no OptionalInputBlock to show*/}
               <OptionalInputBlock nameOfInputBlockToShow={field.value} />
             </>
           );
