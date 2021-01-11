@@ -4,6 +4,8 @@ This project was created using React with Typescript.
 
 The app is an example of a support form where a customer can send an enquiry to a business. There is a drop down menu where you can specify what you would like ask. The fields are all validated before being sent off.
 
+If the form has been validated successfully you will be redirected to a success page where you can see the information that has been sent.
+
 ## Installation and Quick Set Up
 
 On your Mac terminal carry out the following and execute the commands where proceeding the $ sign:

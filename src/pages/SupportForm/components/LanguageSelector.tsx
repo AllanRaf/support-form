@@ -1,11 +1,10 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { LanguageSelect } from "../styles/input-styles";
 
 export const LanguageSelector: React.FunctionComponent = () => {
   const { i18n } = useTranslation();
-  const handleChange = (event) => {
-    console.log("language change", event.target.value);
+  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     i18n.changeLanguage(event.target.value);
   };
   return (

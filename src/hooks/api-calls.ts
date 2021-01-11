@@ -16,6 +16,7 @@ const extractFormData = (formData: FormValues) => {
   return sanitisedFormData;
 };
 
+//fake api call for testing purposes
 export const useSubmitForm = () => {
   const history = useHistory();
 

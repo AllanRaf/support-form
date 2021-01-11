@@ -1,5 +1,4 @@
 import React from "react";
-import { withRouter, RouteComponentProps } from "react-router-dom";
 import { Form, Formik } from "formik";
 import { BigTitle } from "./styles";
 import { useSubmitForm } from "../../hooks/api-calls";
@@ -8,12 +7,12 @@ import { supportFormValidation } from "./supportFormValidation";
 import {
   UserInputBlock,
   LanguageSelector,
-  SelectField,
+  SelectInputBlock,
   ButtonBlock,
 } from "./components";
 import { useTranslation } from "react-i18next";
 
-type SupportFormProps = RouteComponentProps;
+type SupportPageProps = {};
 
 export interface FormValues {
   name: string;
@@ -24,7 +23,7 @@ export interface FormValues {
   phoneNumber: string;
 }
 
-export const SupportPage: React.FunctionComponent<SupportFormProps> = () => {
+export const SupportPage: React.FunctionComponent<SupportPageProps> = () => {
   const initialValues = {
     name: "",
     email: "",
@@ -52,14 +51,11 @@ export const SupportPage: React.FunctionComponent<SupportFormProps> = () => {
           }, 1000);
         }}
       >
-        {({ isSubmitting, values, isValid }) => (
+        {({ isSubmitting }) => (
           <Form>
             <UserInputBlock name="name" />
-
             <UserInputBlock name="email" />
-
-            <SelectField />
-
+            <SelectInputBlock />
             <UserInputBlock name="description" inputType="textarea" />
 
             {isSubmitting && <div>submitting form</div>}
@@ -71,8 +67,6 @@ export const SupportPage: React.FunctionComponent<SupportFormProps> = () => {
     </SupportFormContainer>
   );
 };
-
-//export const SupportPage = withRouter(SupportForm);
 
 const SupportFormContainer = styled.div`
   display: flex;

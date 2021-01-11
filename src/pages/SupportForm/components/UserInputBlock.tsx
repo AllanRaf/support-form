@@ -3,8 +3,6 @@ import { Field } from "formik";
 
 import { useTranslation } from "react-i18next";
 import {
-  ErrorContainer,
-  GeneralContainer,
   InputContainer,
   UserInputLabel,
   UserInputDescription,
