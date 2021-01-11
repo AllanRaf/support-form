@@ -5,3 +5,4 @@ export * from "./select/SelectField";
 export * from "./InputWrapper";
 export * from "./OptionalInputBlock";
 export * from "./ErrorMessageBlock";
+export * from "./ButtonBlock";

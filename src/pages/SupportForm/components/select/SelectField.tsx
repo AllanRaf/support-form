@@ -1,15 +1,14 @@
 import React from "react";
-import { Field, ErrorMessage } from "formik";
+import { Field } from "formik";
 import {
-  ContainerDiv,
-  ErrorContainer,
   InputContainer,
   ThemeSelect,
   UserInputLabel,
 } from "../../styles/input-styles";
 import { Option } from "./Option";
-import { ErrorMessageBlock } from "../index";
+import { OptionalInputBlock } from "../index";
 import { useTranslation } from "react-i18next";
+import { UserInputBlock } from "../FieldInput";
 
 export const SelectField: React.FunctionComponent = () => {
   const { t } = useTranslation();
@@ -25,6 +24,7 @@ export const SelectField: React.FunctionComponent = () => {
         {({
           field, // { name, value, onChange, onBlur }
         }) => {
+          console.log("onChange", field.value);
           return (
             <>
               <UserInputLabel>{t("topic")}</UserInputLabel>
@@ -34,11 +34,11 @@ export const SelectField: React.FunctionComponent = () => {
                   return <Option key={label} label={label} value={value} />;
                 })}
               </ThemeSelect>
+              <OptionalInputBlock nameOfInputBlockToShow={field.value} />
             </>
           );
         }}
       </Field>
-      {/* <ErrorMessageBlock name="selected" /> */}
     </InputContainer>
   );
 };

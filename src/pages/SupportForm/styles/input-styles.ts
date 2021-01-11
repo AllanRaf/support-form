@@ -77,6 +77,31 @@ const PageContainer = styled.div`
   align-items: center;
 `;
 
+const SubmitButton = styled.input`
+  height: 3rem;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  border-width: 0;
+  width: 25%;
+  outline: none;
+  background-color: #4f7fbe;
+  color: #e0e7ef;
+  transition: all 0.2s ease;
+  &:hover {
+    transform: translateY(-1rem);
+    box-shadow: 2px 2px 3px black;
+  }
+  &:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+  &:disabled {
+    opacity: 0.5;
+    transform: translateY(0);
+    box-shadow: none;
+  }
+`;
+
 export {
   ErrorContainer,
   GeneralContainer,
@@ -85,6 +110,7 @@ export {
   LanguageSelect,
   OptionItem,
   PageContainer,
+  SubmitButton,
   ThemeSelect,
   UserInputLabel,
   UserInput,
