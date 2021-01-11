@@ -1,48 +1,100 @@
 import i18next from "i18next";
 import { initReactI18next } from "react-i18next";
 
+const nameInputBlock = {
+  en: { name: "Name", nameFormat: "Joe Bloggs" },
+  de: { name: "Name", nameFormat: "A Mustermann" },
+};
+
+const emailInputBlock = {
+  en: { email: "Email Address", emailFormat: "yourname@yourname.com" },
+  de: {
+    email: "Email Adresse",
+    emailFormat: "deinname@deinname.com",
+  },
+};
+
+const phoneNumberInputBlock = {
+  en: {
+    phoneNumber: "Phone Number",
+    phoneNumberFormat: "01234",
+  },
+  de: {
+    phoneNumber: "Telefonnummer",
+    phoneNumberFormat: "01234",
+  },
+};
+
+const descriptionBlock = {
+  en: {
+    description: "Description",
+    descriptionPlaceholderText: "Your question...",
+  },
+  de: {
+    description: "Beschreibung",
+    descriptionPlaceholderText: "Ihre Anfrage...",
+  },
+};
+
+const softwareIssueBlock = {
+  en: {
+    softwareIssue: "Software Issue",
+    softwareVersion: "Software Version",
+    softwareIssueFormat: "1.0.1",
+  },
+  de: {
+    softwareIssue: "Softwarefehler",
+    softwareVersion: "Softwarenversion",
+  },
+};
+
+const errors = {
+  en: {
+    generalRequirment: "{{field}} must not be empty",
+    softwareFieldEmptyError: "Software version must be included",
+    softwareFieldWrongFormat:
+      "Please provide software version in the correct format",
+  },
+  de: {
+    generalRequirment: "{{field}} mussen nicht leer sein",
+    softwareFieldEmptyError: "Softwareversion muss eingegeben werden",
+    softwareFieldWrongFormat:
+      "Bitte die Softwarenversion in die Form 1.0.1 eingeben",
+  },
+};
+
 const resources = {
   en: {
     translation: {
+      ...nameInputBlock.en,
       title: "Contact Us",
-      name: "Name",
-      email: "Email Address",
+      ...emailInputBlock.en,
+      ...phoneNumberInputBlock.en,
+      ...descriptionBlock.en,
+      ...softwareIssueBlock.en,
+      ...errors.en,
       topic: "Topic",
-      description: "Description",
-      descriptionPlaceholderText: "Your question...",
       generalQuestion: "General Question",
-      softwareIssue: "Software Issue",
-      softwareVersion: "Software Version",
-      softwareIssueFormat: "1.0.1",
-      phoneNumber: "Phone Number",
-      phoneNumberFormat: "01234",
       callMeBack: "Call Me Back",
       send: "send message",
-      generalRequirment: "{{field}} must not be empty",
-      softwareFieldEmptyError: "Software version must be included",
-      softwareFieldWrongFormat:
-        "Please provide software version in the correct format",
+
       formSubmitted: "Form Submitted",
     },
   },
   de: {
     translation: {
+      ...nameInputBlock.de,
       title: "Nehmen Sie Kontact Mit Uns Auf",
-      name: "Name",
-      email: "Email Adresse",
+      ...emailInputBlock.de,
+      ...phoneNumberInputBlock.de,
+      ...descriptionBlock.de,
+      ...softwareIssueBlock.de,
+      ...errors.de,
       topic: "Themenbereich",
-      description: "Beschreibung",
-      descriptionPlaceholderText: "Ihre Anfrage...",
       generalQuestion: "Allgemeine Frage",
-      softwareIssue: "Softwarefehler",
-      softwareVersion: "Softwarenversion",
-      phoneNumber: "Telefonnummer",
       callMeBack: "Ruckruf",
       send: "Nachricht Absenden",
-      generalRequirment: "{{field}} mussen nicht leer sein",
-      softwareFieldEmptyError: "Softwareversion muss eingegeben werden",
-      softwareFieldWrongFormat:
-        "Bitte die Softwarenversion in die richtige Format eingeben",
+
       formSubmitted: "Formular Wurde Abgeschickt",
     },
   },

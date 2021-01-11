@@ -78,7 +78,7 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
           }, 1000);
         }}
       >
-        {({ isSubmitting, values, errors }) => (
+        {({ isSubmitting, values, errors, isValid }) => (
           <Form>
             <CustomFieldInput name="name" />
 
@@ -87,16 +87,10 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
             <SelectField />
 
             {values.selected === "softwareIssue" && (
-              <InputContainer>
-                <UserInputLabel>{t("softwareVersion")}</UserInputLabel>
-                <SelectOption selectedOption="softwareIssue" />
-              </InputContainer>
+              <CustomFieldInput name={values.selected} />
             )}
             {values.selected === "phoneNumber" && (
-              <InputContainer>
-                <UserInputLabel>{t("phoneNumber")}</UserInputLabel>
-                <SelectOption selectedOption="phoneNumber" />
-              </InputContainer>
+              <CustomFieldInput name={values.selected} />
             )}
 
             <CustomFieldInput name="description" inputType="textarea" />
@@ -141,6 +135,11 @@ const SubmitButton = styled.input`
     box-shadow: 2px 2px 3px black;
   }
   &:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+  &:disabled {
+    opacity: 0.5;
     transform: translateY(0);
     box-shadow: none;
   }
