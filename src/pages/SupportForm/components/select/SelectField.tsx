@@ -8,6 +8,7 @@ import {
   UserInputLabel,
 } from "../../styles/input-styles";
 import { Option } from "./Option";
+import { ErrorMessageBlock } from "../index";
 import { useTranslation } from "react-i18next";
 
 export const SelectField: React.FunctionComponent = () => {
@@ -37,10 +38,7 @@ export const SelectField: React.FunctionComponent = () => {
           );
         }}
       </Field>
-
-      <ContainerDiv>
-        <ErrorMessage name="selected" component={ErrorContainer} />
-      </ContainerDiv>
+      {/* <ErrorMessageBlock name="selected" /> */}
     </InputContainer>
   );
 };

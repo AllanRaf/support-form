@@ -1,6 +1,3 @@
-import i18next from "i18next";
-import { initReactI18next } from "react-i18next";
-
 const nameInputBlock = {
   en: { name: "Name", nameFormat: "Joe Bloggs" },
   de: { name: "Name", nameFormat: "A Mustermann" },
@@ -29,10 +26,12 @@ const descriptionBlock = {
   en: {
     description: "Description",
     descriptionPlaceholderText: "Your question...",
+    descriptionFormat: "Your question...",
   },
   de: {
     description: "Beschreibung",
     descriptionPlaceholderText: "Ihre Anfrage...",
+    descriptionFormat: "Ihre Anfrage...",
   },
 };
 
@@ -63,49 +62,25 @@ const errors = {
   },
 };
 
-const resources = {
+const topics = {
   en: {
-    translation: {
-      ...nameInputBlock.en,
-      title: "Contact Us",
-      ...emailInputBlock.en,
-      ...phoneNumberInputBlock.en,
-      ...descriptionBlock.en,
-      ...softwareIssueBlock.en,
-      ...errors.en,
-      topic: "Topic",
-      generalQuestion: "General Question",
-      callMeBack: "Call Me Back",
-      send: "send message",
-
-      formSubmitted: "Form Submitted",
-    },
+    topic: "Topic",
+    generalQuestion: "General Question",
+    callMeBack: "Call Me Back",
   },
   de: {
-    translation: {
-      ...nameInputBlock.de,
-      title: "Nehmen Sie Kontact Mit Uns Auf",
-      ...emailInputBlock.de,
-      ...phoneNumberInputBlock.de,
-      ...descriptionBlock.de,
-      ...softwareIssueBlock.de,
-      ...errors.de,
-      topic: "Themenbereich",
-      generalQuestion: "Allgemeine Frage",
-      callMeBack: "Ruckruf",
-      send: "Nachricht Absenden",
-
-      formSubmitted: "Formular Wurde Abgeschickt",
-    },
+    topic: "Themenbereich",
+    generalQuestion: "Allgemeine Frage",
+    callMeBack: "Ruckruf",
   },
 };
-i18next.use(initReactI18next).init({
-  resources,
-  lng: "de",
-  fallbackLng: "en",
-  supportedLngs: ["de", "en"],
-  interpolation: {
-    escapeValue: false,
-  },
-});
-export default i18next;
+
+export {
+  nameInputBlock,
+  emailInputBlock,
+  phoneNumberInputBlock,
+  descriptionBlock,
+  softwareIssueBlock,
+  errors,
+  topics,
+};

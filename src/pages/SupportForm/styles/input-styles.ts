@@ -57,6 +57,17 @@ const UserInput = styled.input`
   border-radius: 1px;
 `;
 
+const UserInputDescription = styled.textarea`
+  width: 60%;
+  height: 15rem;
+  outline: none;
+  font-size: 1.5rem;
+  border: 1px solid #898f97;
+  padding: 1rem 1rem 1rem;
+  color: black;
+  border-radius: 1px;
+`;
+
 const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -77,4 +88,5 @@ export {
   ThemeSelect,
   UserInputLabel,
   UserInput,
+  UserInputDescription,
 };

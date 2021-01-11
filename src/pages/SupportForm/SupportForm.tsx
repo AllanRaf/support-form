@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { Form, Formik } from "formik";
-import { BigTitle, UserInputLabel, InputContainer } from "./styles";
+import { BigTitle, InputContainer } from "./styles";
 import { SelectOption } from "./components/SelectOption";
 import styled from "styled-components";
 import { supportFormValidation } from "./supportFormValidation";
-import { CustomFieldInput, LanguageSelector, SelectField } from "./components";
+import {
+  UserInputBlock,
+  LanguageSelector,
+  SelectField,
+  OptionalInputBlock,
+} from "./components";
 import { useTranslation } from "react-i18next";
 
 type SupportFormProps = RouteComponentProps;
@@ -46,12 +51,6 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
     softwareIssue: "",
   };
 
-  const topicOptions = {
-    generalQuestion: "generalQuestion",
-    phoneNumber: "phoneNumber",
-    softwareIssue: "softwareIssue",
-  };
-  const [topic, setTopic] = useState(topicOptions.generalQuestion);
   const { t } = useTranslation();
 
   const handleSubmit = (values: FormValues) => {
@@ -80,20 +79,21 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
       >
         {({ isSubmitting, values, errors, isValid }) => (
           <Form>
-            <CustomFieldInput name="name" />
+            <UserInputBlock name="name" />
 
-            <CustomFieldInput name="email" />
+            <UserInputBlock name="email" />
 
             <SelectField />
 
-            {values.selected === "softwareIssue" && (
-              <CustomFieldInput name={values.selected} />
+            {/*             {values.selected === "softwareIssue" && (
+              <UserInputBlock name={values.selected} />
             )}
             {values.selected === "phoneNumber" && (
-              <CustomFieldInput name={values.selected} />
-            )}
+              <UserInputBlock name={values.selected} />
+            )} */}
+            <OptionalInputBlock nameOfInputBlockToShow={values.selected} />
 
-            <CustomFieldInput name="description" inputType="textarea" />
+            <UserInputBlock name="description" inputType="textarea" />
 
             {isSubmitting && <div>submitting form</div>}
             <InputContainer>
