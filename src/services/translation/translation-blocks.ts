@@ -50,15 +50,19 @@ const softwareIssueBlock = {
 const errors = {
   en: {
     generalRequirment: "{{field}} must not be empty",
+    emailValid: "Email must be valid",
+    phoneNumberValid: "Please only use numbers",
     softwareFieldEmptyError: "Software version must be included",
     softwareFieldWrongFormat:
-      "Please provide software version in the correct format",
+      "Software version format should be in the form eg. 1.20.0",
   },
   de: {
-    generalRequirment: "{{field}} mussen nicht leer sein",
+    generalRequirment: "{{field}} muss nicht leer sein",
+    emailValid: "Email muss gültig sein",
+    phoneNumberValid: "Please only use numbers",
     softwareFieldEmptyError: "Softwareversion muss eingegeben werden",
     softwareFieldWrongFormat:
-      "Bitte die Softwarenversion in die Form 1.0.1 eingeben",
+      "Bitte die Softwarenversion im Format zB 1.20.1 eingeben",
   },
 };
 

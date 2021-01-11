@@ -3,7 +3,6 @@ import { withRouter, RouteComponentProps } from "react-router-dom";
 import { Form, Formik } from "formik";
 import { BigTitle } from "./styles";
 import { useSubmitForm } from "../../hooks/api-calls";
-import { SelectOption } from "./components/SelectOption";
 import styled from "styled-components";
 import { supportFormValidation } from "./supportFormValidation";
 import {
@@ -11,7 +10,6 @@ import {
   LanguageSelector,
   SelectField,
   ButtonBlock,
-  InputWrapper,
 } from "./components";
 import { useTranslation } from "react-i18next";
 
@@ -26,9 +24,7 @@ export interface FormValues {
   phoneNumber: string;
 }
 
-const SupportForm: React.FunctionComponent<SupportFormProps> = ({
-  history,
-}) => {
+export const SupportPage: React.FunctionComponent<SupportFormProps> = () => {
   const initialValues = {
     name: "",
     email: "",
@@ -56,7 +52,7 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
           }, 1000);
         }}
       >
-        {({ isSubmitting, values, errors, isValid }) => (
+        {({ isSubmitting, values, isValid }) => (
           <Form>
             <UserInputBlock name="name" />
 
@@ -76,7 +72,7 @@ const SupportForm: React.FunctionComponent<SupportFormProps> = ({
   );
 };
 
-export const SupportPage = withRouter(SupportForm);
+//export const SupportPage = withRouter(SupportForm);
 
 const SupportFormContainer = styled.div`
   display: flex;

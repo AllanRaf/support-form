@@ -2,6 +2,7 @@ import { useHistory } from "react-router-dom";
 import { FormValues } from "../pages/SupportForm/SupportForm";
 
 const extractFormData = (formData: FormValues) => {
+  //return data with empty fields deleted
   let sanitisedFormData;
 
   for (const fieldData in formData) {
@@ -12,7 +13,6 @@ const extractFormData = (formData: FormValues) => {
     }
     sanitisedFormData = formData;
   }
-  console.log("sanitised form data", sanitisedFormData);
   return sanitisedFormData;
 };
 
@@ -24,6 +24,4 @@ export const useSubmitForm = () => {
     history.push({ pathname: "/contactsent", state: { formData } });
   };
   return handleSubmit;
-
-  //setSupportData(values);
 };
