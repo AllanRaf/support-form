@@ -18,3 +18,4 @@ On your Mac terminal carry out the following and execute the commands where proc
    - $ yarn start
 
 After executing the above steps you should have the app running in the simulator:
+![demo](https://user-images.githubusercontent.com/54289698/104242037-d741ba00-545e-11eb-80aa-dd30cc65660e.gif)
