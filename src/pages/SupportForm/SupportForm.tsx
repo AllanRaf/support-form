@@ -1,5 +1,4 @@
 import React from "react";
-import { withRouter, RouteComponentProps } from "react-router-dom";
 import { Form, Formik } from "formik";
 import { BigTitle } from "./styles";
 import { useSubmitForm } from "../../hooks/api-calls";
@@ -52,12 +51,11 @@ export const SupportPage: React.FunctionComponent<SupportPageProps> = () => {
           }, 1000);
         }}
       >
-        {({ isSubmitting, values, isValid }) => (
+        {({ isSubmitting }) => (
           <Form>
             <UserInputBlock name="name" />
             <UserInputBlock name="email" />
             <SelectInputBlock />
-
             <UserInputBlock name="description" inputType="textarea" />
 
             {isSubmitting && <div>submitting form</div>}
@@ -69,8 +67,6 @@ export const SupportPage: React.FunctionComponent<SupportPageProps> = () => {
     </SupportFormContainer>
   );
 };
-
-//export const SupportPage = withRouter(SupportForm);
 
 const SupportFormContainer = styled.div`
   display: flex;
