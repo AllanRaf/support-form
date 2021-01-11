@@ -12,7 +12,7 @@ export const supportFormValidation = yup.lazy((values) => {
     email: yup
       .string()
       .label("Email")
-      .email("Email address must be valid")
+      .email(i18next.t("emailValid"))
       .required(i18next.t("generalRequirment", { field: "email" })),
 
     description: yup
@@ -25,9 +25,9 @@ export const supportFormValidation = yup.lazy((values) => {
         return yup
           .string()
           .label("phoneNumber")
-          .required("Please enter phone number")
-          .matches(/^[0-9]*$/, "Please only use numbers")
-          .min(2, "too short");
+          .required(i18next.t("generalRequirment", { field: "phoneNumber" }))
+          .matches(/^[0-9]*$/, i18next.t("phoneNumberValid"))
+          .min(4, "too short");
       } else {
         return yup.mixed().notRequired();
       }
