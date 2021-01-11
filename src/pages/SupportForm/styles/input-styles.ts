@@ -85,14 +85,15 @@ const SubmitButton = styled.input`
   width: 25%;
   outline: none;
   background-color: #4f7fbe;
+  opacity: 0.8;
   color: #e0e7ef;
   transition: all 0.2s ease;
+  box-shadow: 2px 2px 3px black;
   &:hover {
-    transform: translateY(-1rem);
-    box-shadow: 2px 2px 3px black;
+    opacity: 1;
   }
   &:active {
-    transform: translateY(0);
+    transform: translateY(1px);
     box-shadow: none;
   }
   &:disabled {
