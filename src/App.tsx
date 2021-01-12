@@ -1,12 +1,11 @@
 import React from "react";
-import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { SupportPage } from "./pages/SupportForm/SupportForm";
 import { ContactSubmitSuccessPage } from "./pages/SubmitSuccessPage/ContactSubmitSuccessPage";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Router>
         <Switch>
           <Route exact path="/" component={SupportPage} />

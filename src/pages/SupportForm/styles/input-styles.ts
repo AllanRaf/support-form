@@ -5,6 +5,11 @@ const GeneralContainer = styled.div`
   height: 3rem;
 `;
 
+const TopSpacing = styled.div`
+  margin-top: 1rem;
+  width: 100%;
+`;
+
 const ErrorContainer = styled.div`
   font-size: 1.5rem;
   color: red;
@@ -113,6 +118,7 @@ export {
   PageContainer,
   SubmitButton,
   ThemeSelect,
+  TopSpacing,
   UserInputLabel,
   UserInput,
   UserInputDescription,
