@@ -21,8 +21,9 @@ const OptionItem = styled.option`
   border: 1px solid #898f97;
 `;
 
-const ContainerDiv = styled.div`
-  height: 3rem;
+const CenterContent = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 const LanguageSelect = styled.select`
@@ -109,10 +110,10 @@ const SubmitButton = styled.input`
 `;
 
 export {
+  CenterContent,
   ErrorContainer,
   GeneralContainer,
   InputContainer,
-  ContainerDiv,
   LanguageSelect,
   OptionItem,
   PageContainer,

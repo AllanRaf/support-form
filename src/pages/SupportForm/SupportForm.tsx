@@ -1,12 +1,12 @@
 import React from "react";
 import { Form, Formik } from "formik";
-import { BigTitle } from "./styles";
+import { BigTitle, CenterContent } from "./styles";
 import { useSubmitForm } from "../../hooks/api-calls";
 import styled from "styled-components";
 import Loader from "react-loader-spinner";
 import { supportFormValidation } from "./supportFormValidation";
 import {
-  UserInputBlock,
+  TextInputBlock,
   LanguageSelector,
   SelectInputBlock,
   ButtonBlock,
@@ -45,13 +45,15 @@ export const SupportPage: React.FunctionComponent<SupportPageProps> = () => {
       >
         {({ isSubmitting }) => (
           <Form>
-            <UserInputBlock name="name" />
-            <UserInputBlock name="email" />
+            <TextInputBlock name="name" />
+            <TextInputBlock name="email" />
             <SelectInputBlock />
-            <UserInputBlock name="description" inputType="textarea" />
+            <TextInputBlock name="description" inputType="textarea" />
 
             {isSubmitting && (
-              <Loader type="Oval" color="#4f7fbe" height={60} width={60} />
+              <CenterContent>
+                <Loader type="Oval" color="#4f7fbe" height={60} width={60} />
+              </CenterContent>
             )}
 
             <ButtonBlock isSubmitting={isSubmitting} />

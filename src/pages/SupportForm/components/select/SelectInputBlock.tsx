@@ -14,7 +14,10 @@ export const SelectInputBlock: React.FunctionComponent = () => {
   const optionsList = [
     { label: t("generalQuestion"), value: "generalQuestion" },
     { label: t("callMeBack"), value: "phoneNumber" },
-    { label: t("softwareIssue"), value: "softwareIssue" },
+    {
+      label: t("softwareIssue"),
+      value: "softwareIssue" /* "softwareVersion"*/,
+    },
   ];
 
   return (

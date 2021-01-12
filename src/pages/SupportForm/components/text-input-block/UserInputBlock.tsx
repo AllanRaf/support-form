@@ -1,13 +1,13 @@
 import React from "react";
-import { InputContainer } from "../styles/input-styles";
-import { TextInputContainer } from "./";
+import { InputContainer } from "../../styles/input-styles";
+import { TextInputContainer } from "..";
 
-type CustomFieldInputProps = {
+type TextInputBlockProps = {
   name: string;
   inputType?: string;
 };
 
-export const UserInputBlock: React.FunctionComponent<CustomFieldInputProps> = ({
+export const TextInputBlock: React.FunctionComponent<TextInputBlockProps> = ({
   name,
   inputType = "text",
 }) => {
