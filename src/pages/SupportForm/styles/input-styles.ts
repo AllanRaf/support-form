@@ -5,11 +5,6 @@ const GeneralContainer = styled.div`
   height: 3rem;
 `;
 
-const TopSpacing = styled.div`
-  margin-top: 1rem;
-  width: 100%;
-`;
-
 const ErrorContainer = styled.div`
   font-size: 1.5rem;
   color: red;
@@ -19,11 +14,6 @@ const OptionItem = styled.option`
   width: 40%;
   height: 1.5rem;
   border: 1px solid #898f97;
-`;
-
-const CenterContent = styled.div`
-  display: flex;
-  justify-content: center;
 `;
 
 const LanguageSelect = styled.select`
@@ -110,7 +100,6 @@ const SubmitButton = styled.input`
 `;
 
 export {
-  CenterContent,
   ErrorContainer,
   GeneralContainer,
   InputContainer,
@@ -119,7 +108,6 @@ export {
   PageContainer,
   SubmitButton,
   ThemeSelect,
-  TopSpacing,
   UserInputLabel,
   UserInput,
   UserInputDescription,

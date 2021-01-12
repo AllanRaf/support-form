@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Formik } from "formik";
-import { BigTitle, CenterContent } from "./styles";
+import { BigTitle, CenterContent } from "../../styles";
 import { useSubmitForm } from "../../hooks/api-calls";
 import styled from "styled-components";
 import Loader from "react-loader-spinner";

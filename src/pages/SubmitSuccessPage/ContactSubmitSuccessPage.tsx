@@ -1,7 +1,8 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { Location } from "history";
-import { PageContainer, BigTitle } from "../SupportForm/styles";
+import { PageContainer } from "../SupportForm/styles";
+import { BigTitle } from "../../styles";
 import { SubmittedInfoBlock } from "./components/InfoBlock";
 import { useTranslation } from "react-i18next";
 

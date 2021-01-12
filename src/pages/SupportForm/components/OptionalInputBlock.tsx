@@ -1,6 +1,6 @@
 import React from "react";
 import { TextInputContainer } from "./";
-import { TopSpacing } from "../styles";
+import { TopSpacing } from "../../../styles";
 
 type OptionalInputBlockProps = {
   nameOfInputBlockToShow: string;
