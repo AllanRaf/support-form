@@ -1,19 +1,18 @@
 import React from "react";
 import { Field } from "formik";
-
 import { useTranslation } from "react-i18next";
 import {
   UserInputLabel,
   UserInputDescription,
   UserInput,
-} from "../styles/input-styles";
-import { ErrorMessageBlock } from "./ErrorMessageBlock";
+} from "../../styles/input-styles";
+import { ErrorMessageBlock } from "../ErrorMessageBlock";
 
 type TextInputContainerProps = {
   name: string;
   inputType?: string;
 };
-
+//This component can be refactored
 export const TextInputContainer: React.FunctionComponent<TextInputContainerProps> = ({
   name,
   inputType = "text",
