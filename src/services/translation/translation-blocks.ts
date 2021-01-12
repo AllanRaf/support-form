@@ -50,16 +50,20 @@ const softwareIssueBlock = {
 const errors = {
   en: {
     generalRequirment: "{{field}} must not be empty",
+    descriptionTooShort: "Minimum 5 characters please",
     emailValid: "Email must be valid",
     phoneNumberValid: "Please only use numbers",
+    phoneNumberTooShort: "Too short",
     softwareFieldEmptyError: "Software version must be included",
     softwareFieldWrongFormat:
       "Software version format should be in the form eg. 1.20.0",
   },
   de: {
-    generalRequirment: "{{field}} muss nicht leer sein",
+    generalRequirment: "{{field}} darf nicht leer sein",
+    descriptionTooShort: "Mindestens 5 Buchstaben bitte",
     emailValid: "Email muss gültig sein",
-    phoneNumberValid: "Please only use numbers",
+    phoneNumberValid: "Nur Ziffern bitte",
+    phoneNumberTooShort: "Zu kurz",
     softwareFieldEmptyError: "Softwareversion muss eingegeben werden",
     softwareFieldWrongFormat:
       "Bitte die Softwarenversion im Format zB 1.20.1 eingeben",

@@ -21,7 +21,6 @@ export const SelectInputBlock: React.FunctionComponent = () => {
     <InputContainer>
       <Field name="selected">
         {({ field }) => {
-          console.log("onChange", field.value);
           return (
             <>
               <UserInputLabel>{t("topic")}</UserInputLabel>

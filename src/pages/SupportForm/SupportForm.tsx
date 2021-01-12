@@ -3,6 +3,7 @@ import { Form, Formik } from "formik";
 import { BigTitle } from "./styles";
 import { useSubmitForm } from "../../hooks/api-calls";
 import styled from "styled-components";
+import Loader from "react-loader-spinner";
 import { supportFormValidation } from "./supportFormValidation";
 import {
   UserInputBlock,
@@ -13,15 +14,6 @@ import {
 import { useTranslation } from "react-i18next";
 
 type SupportPageProps = {};
-
-export interface FormValues {
-  name: string;
-  email: string;
-  description: string;
-  selected: string;
-  softwareIssue: string;
-  phoneNumber: string;
-}
 
 export const SupportPage: React.FunctionComponent<SupportPageProps> = () => {
   const initialValues = {
@@ -58,7 +50,9 @@ export const SupportPage: React.FunctionComponent<SupportPageProps> = () => {
             <SelectInputBlock />
             <UserInputBlock name="description" inputType="textarea" />
 
-            {isSubmitting && <div>submitting form</div>}
+            {isSubmitting && (
+              <Loader type="Oval" color="#4f7fbe" height={60} width={60} />
+            )}
 
             <ButtonBlock isSubmitting={isSubmitting} />
           </Form>
