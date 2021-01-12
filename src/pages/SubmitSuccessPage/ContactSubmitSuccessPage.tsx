@@ -1,8 +1,8 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { Location } from "history";
-import { PageContainer } from "../SupportForm/styles";
-import { BigTitle } from "../../styles";
+import styled from "styled-components";
+import { BigTitle, SmallTitle, TopSpacing } from "../../styles";
 import { SubmittedInfoBlock } from "./components/InfoBlock";
 import { useTranslation } from "react-i18next";
 
@@ -24,9 +24,20 @@ export const ContactSubmitSuccessPage: React.FunctionComponent = () => {
   return (
     <PageContainer>
       <BigTitle>{t("formSubmitted")}</BigTitle>
-      <span>{JSON.stringify(new Date())}</span>
+      <TopSpacing>
+        <SmallTitle>{JSON.stringify(new Date())}</SmallTitle>
+      </TopSpacing>
 
       <SubmittedInfoBlock formData={formData} />
     </PageContainer>
   );
 };
+
+const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-right: 3rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  align-items: center;
+`;

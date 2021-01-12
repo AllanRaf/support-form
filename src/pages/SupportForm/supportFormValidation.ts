@@ -52,7 +52,9 @@ export const supportFormValidation = yup.lazy((values) => {
       }
     }),
     selected: yup.lazy(() => {
-      if (values.selected === "phoneNumber") {
+      return yup.string().label("theme").notRequired();
+
+      /*  if (values.selected === "phoneNumber") {
         return yup
           .string()
           .label("phoneNumber")
@@ -66,7 +68,7 @@ export const supportFormValidation = yup.lazy((values) => {
           .min(4, "too short");
       } else {
         return yup.mixed().notRequired();
-      }
+      } */
     }),
   });
 });

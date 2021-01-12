@@ -46,15 +46,6 @@ const UserInputDescription = styled.textarea`
   border-radius: 1px;
 `;
 
-const PageContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-right: 3rem;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  align-items: center;
-`;
-
 const SubmitButton = styled.input`
   height: 3rem;
   margin-top: 1rem;
@@ -84,7 +75,6 @@ const SubmitButton = styled.input`
 export {
   LanguageSelect,
   OptionItem,
-  PageContainer,
   SubmitButton,
   ThemeSelect,
   UserInputLabel,

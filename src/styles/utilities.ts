@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+//styles to add spacing and margins to components
+
 const CenterContent = styled.div`
   display: flex;
   justify-content: center;

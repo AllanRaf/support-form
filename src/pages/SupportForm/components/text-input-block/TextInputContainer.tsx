@@ -12,7 +12,7 @@ type TextInputContainerProps = {
   name: string;
   inputType?: string;
 };
-//This component can be refactored
+//This component can be refactored to tidy up the ternary operator block
 export const TextInputContainer: React.FunctionComponent<TextInputContainerProps> = ({
   name,
   inputType = "text",

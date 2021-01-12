@@ -5,4 +5,9 @@ const BigTitle = styled.h1`
   padding-left: 5rem;
 `;
 
-export { BigTitle };
+const SmallTitle = styled.h3`
+  font-size: 2rem;
+  text-align: center;
+`;
+
+export { BigTitle, SmallTitle };

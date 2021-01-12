@@ -14,11 +14,11 @@ const emailInputBlock = {
 const phoneNumberInputBlock = {
   en: {
     phoneNumber: "Phone Number",
-    phoneNumberFormat: "01234",
+    phoneNumberFormat: "0049123456",
   },
   de: {
     phoneNumber: "Telefonnummer",
-    phoneNumberFormat: "01234",
+    phoneNumberFormat: "0049123456",
   },
 };
 
@@ -50,7 +50,7 @@ const softwareIssueBlock = {
 const errors = {
   en: {
     generalRequirment: "{{field}} must not be empty",
-    descriptionTooShort: "Minimum 5 characters please",
+    descriptionTooShort: "Minimum 6 characters please",
     emailValid: "Email must be valid",
     phoneNumberValid: "Please only use numbers",
     phoneNumberTooShort: "Too short",
@@ -60,7 +60,7 @@ const errors = {
   },
   de: {
     generalRequirment: "{{field}} darf nicht leer sein",
-    descriptionTooShort: "Mindestens 5 Buchstaben bitte",
+    descriptionTooShort: "Mindestens 6 Buchstaben bitte",
     emailValid: "Email muss gültig sein",
     phoneNumberValid: "Nur Ziffern bitte",
     phoneNumberTooShort: "Zu kurz",
@@ -79,7 +79,7 @@ const topics = {
   de: {
     topic: "Themenbereich",
     generalQuestion: "Allgemeine Frage",
-    callMeBack: "Ruckruf",
+    callMeBack: "Rückruf",
   },
 };
 

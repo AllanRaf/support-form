@@ -1,4 +1,4 @@
-export * from "./text-input-block/UserInputBlock";
+export * from "./text-input-block/TextInputBlock";
 export * from "./LanguageSelector";
 export * from "./select/SelectInputBlock";
 export * from "./OptionalInputBlock";
