@@ -73,12 +73,12 @@ const errors = {
 const topics = {
   en: {
     topic: "Topic",
-    generalQuestion: "General Question",
+    generalQuestion: "General Enquiry",
     callMeBack: "Call Me Back",
   },
   de: {
     topic: "Themenbereich",
-    generalQuestion: "Allgemeine Frage",
+    generalQuestion: "Allgemeine Anfrage",
     callMeBack: "Rückruf",
   },
 };
