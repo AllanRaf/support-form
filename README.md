@@ -8,7 +8,7 @@ If the form has been validated successfully you will be redirected to a success 
 
 ## Installation and Quick Set Up
 
-On your Mac terminal carry out the following and execute the commands where proceeding the $ sign:
+On your terminal execute the commands after $ sign:
 
 1. Clone the respository
    - $ git clone https://github.com/AllanRaf/support-form
