@@ -1,5 +1,5 @@
 import React from "react";
-import { InputContainer } from "../../styles/input-styles";
+import { InputContainer } from "../../../../styles";
 import { TextInputContainer } from "..";
 
 type TextInputBlockProps = {

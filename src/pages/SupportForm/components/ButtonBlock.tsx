@@ -1,5 +1,6 @@
 import React from "react";
-import { InputContainer, SubmitButton } from "../styles";
+import { SubmitButton } from "../styles";
+import { InputContainer } from "../../../styles";
 import { useTranslation } from "react-i18next";
 
 export const ButtonBlock = ({ isSubmitting }) => {

@@ -15,4 +15,23 @@ const GeneralContainer = styled.div`
   height: 3rem;
 `;
 
-export { CenterContent, GeneralContainer, TopSpacing };
+const ErrorContainer = styled.div`
+  font-size: 1.5rem;
+  color: red;
+`;
+
+const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 1rem;
+  padding-left: 5rem;
+`;
+
+export {
+  CenterContent,
+  ErrorContainer,
+  GeneralContainer,
+  InputContainer,
+  TopSpacing,
+};

@@ -1,10 +1,7 @@
 import React from "react";
 import { Field } from "formik";
-import {
-  InputContainer,
-  ThemeSelect,
-  UserInputLabel,
-} from "../../styles/input-styles";
+import { ThemeSelect, UserInputLabel } from "../../styles/input-styles";
+import { InputContainer } from "../../../../styles";
 import { Option } from "./Option";
 import { OptionalInputBlock } from "../index";
 import { useTranslation } from "react-i18next";

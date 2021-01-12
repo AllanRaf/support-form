@@ -1,7 +1,7 @@
 import React from "react";
 import { ErrorMessage } from "formik";
-import { ErrorContainer } from "../styles/input-styles";
-import { GeneralContainer } from "../../../styles";
+
+import { ErrorContainer, GeneralContainer } from "../../../styles";
 type ErrorMessageBlockProps = {
   name: string;
 };
