@@ -8,26 +8,31 @@ export const supportFormValidation = yup.lazy((values) => {
     name: yup
       .string()
       .label("name")
-      .required(i18next.t("generalRequirment", { field: "name" })),
+      .required(i18next.t("generalRequirment", { field: "Name" })),
     email: yup
       .string()
       .label("Email")
       .email(i18next.t("emailValid"))
-      .required(i18next.t("generalRequirment", { field: "email" })),
+      .required(i18next.t("generalRequirment", { field: "Email" })),
 
     description: yup
       .string()
       .label("description")
-      .required(i18next.t("generalRequirment", { field: "description" })),
+      .required(
+        i18next.t("generalRequirment", { field: i18next.t("description") })
+      )
+      .min(6, i18next.t("descriptionTooShort")),
 
     phoneNumber: yup.lazy(() => {
       if (values.selected === "phoneNumber") {
         return yup
           .string()
           .label("phoneNumber")
-          .required(i18next.t("generalRequirment", { field: "phoneNumber" }))
+          .required(
+            i18next.t("generalRequirment", { field: i18next.t("phoneNumber") })
+          )
           .matches(/^[0-9]*$/, i18next.t("phoneNumberValid"))
-          .min(4, "too short");
+          .min(4, i18next.t("phoneNumberTooShort"));
       } else {
         return yup.mixed().notRequired();
       }

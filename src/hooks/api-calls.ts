@@ -1,5 +1,5 @@
 import { useHistory } from "react-router-dom";
-import { FormValues } from "../pages/SupportForm/SupportForm";
+import { FormValues } from "../types/form-types";
 
 const extractFormData = (formData: FormValues) => {
   //return data with empty fields deleted
